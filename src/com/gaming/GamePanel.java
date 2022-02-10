@@ -1,7 +1,7 @@
 package com.gaming;
 
-import com.gaming.entity.player;
-
+import entity.Player;
+import com.gaming.Main;
 import javax.swing.*;
 import java.awt.*;
 
@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements  Runnable {
 
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
-    player player = new player(this,keyH);
+    Player player = new Player(this,keyH);
 
 
 
@@ -84,7 +84,7 @@ repaint();
     public void update(){
 
         player.update();
-        player.draw(g2);
+
 
 if(keyH.upPressed ==true){
     playerY -= playerSpeed;

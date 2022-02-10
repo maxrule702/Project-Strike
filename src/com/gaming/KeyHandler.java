@@ -1,5 +1,5 @@
 package com.gaming;
-
+import com.gaming.Main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
