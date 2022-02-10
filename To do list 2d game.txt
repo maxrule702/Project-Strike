@@ -19,3 +19,6 @@ menu - incomplete
 pause menu - incomplete
 player attacking - incomplete
 inventory - incomplete
+character background - incomplete
+port to android - incomplete
+launch onto google play store - incomplete
