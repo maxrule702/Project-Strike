@@ -1,4 +1,4 @@
-package com.gaming;
+package main;
 
 import javax.swing.*;
 

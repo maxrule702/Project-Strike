@@ -1,7 +1,5 @@
-package com.gaming;
-
+package main;
 import entity.Player;
-import com.gaming.Main;
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,5 +1,4 @@
 package entity;
-import com.gaming.Main;
 import java.awt.image.BufferedImage;
 
 public class Entity {

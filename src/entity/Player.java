@@ -1,8 +1,9 @@
 package entity;
 
-import com.gaming.GamePanel;
-import com.gaming.KeyHandler;
-import com.gaming.Main;
+import main.GamePanel;
+import main.KeyHandler;
+import main.Main;
+
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -29,7 +30,7 @@ public class Player extends Entity {
 
     public  void getPlayerImage() {
         try {
-up1 = ImageIO.read(getClass().getResourceAsStream("/player/spritePistolUp.png"));
+up1 = ImageIO.read(getClass().getResourceAsStream("/player/spritePistolDown.png"));
 right1 = ImageIO.read(getClass().getResourceAsStream("/player/spritePistolRight.png"));
 down1 = ImageIO.read(getClass().getResourceAsStream("/player/spritePistolDown.png"));
 left1 = ImageIO.read(getClass().getResourceAsStream("/player/spritePistolLeft.png"));
@@ -47,12 +48,16 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spritePistolLeft.pn
         //movement
         if (keyH.upPressed == true) {
             y -= speed;
+            direction = "up";
         } else if (keyH.downPressed == true) {
             y += speed;
+            direction = "down";
         } else if (keyH.leftPressed == true) {
             x -= speed;
+            direction = "left";
         } else if (keyH.rightPressed == true) {
             x += speed;
+            direction = "right";
         }
 
     }
