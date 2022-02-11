@@ -2,7 +2,6 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
-import main.Main;
 
 
 import javax.imageio.ImageIO;
