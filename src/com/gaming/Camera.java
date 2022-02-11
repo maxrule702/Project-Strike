@@ -28,5 +28,5 @@ public class Camera {
 
     public void setY(float y) {
         this.y = y;
-    } //I'm in pain, do we even have an object anywhere? Help -Matei
+    } //I'm in pain, have we even got an object anywhere? Help -Matei
 }
