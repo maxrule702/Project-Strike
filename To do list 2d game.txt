@@ -1,7 +1,7 @@
 basic movemnt - complete
 creation of some assets - complete
 FPS counter - complete 
-importing characters - incomplete
+importing characters - complete
 advance movement - incomplete
 mouse tracking - incomplete
 npc / hostiles - incomplete
