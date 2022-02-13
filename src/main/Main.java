@@ -10,6 +10,7 @@ public class Main {
         window.setResizable(true);
         window.setTitle("2D Game");
 
+
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
         window.pack(); //allows window to be sized to fit the preferred size

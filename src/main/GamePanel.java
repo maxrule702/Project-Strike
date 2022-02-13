@@ -3,6 +3,7 @@ import entity.Player;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class GamePanel extends JPanel implements  Runnable {
     //Screen settings
     final int oringinalTileSize = 32; // 16*16 tile
