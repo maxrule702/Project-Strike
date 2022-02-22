@@ -1,5 +1,6 @@
 package com.gaming;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -32,4 +33,6 @@ public class Crosshair {
         }
 
     }
+
+    public void draw(Graphics2D g2){}
 }
