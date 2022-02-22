@@ -35,6 +35,11 @@ down1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteDown.png"));
 left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
 
 
+
+
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,7 +81,7 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
             break;
 
             case "down":
-                image = down1;
+               image = down1;
                 break;
 
             case "left":
@@ -91,6 +96,7 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
 
 
         g2.drawImage(image,x,y,gp.tileSize,gp.tileSize,null);
+
 
 
 
