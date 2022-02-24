@@ -35,6 +35,9 @@ public class tileManger {
             tile[2] = new tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/steelTile.png"));
 
+            tile[3] = new tile();
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/kitchenTile.png"));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,7 +102,16 @@ public class tileManger {
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-            g2.drawImage(tile[tileNumber].image,screenX,screenY,gp.tileSize,gp.tileSize,null);
+            //This allows for only the necessary tiles to be rendered
+            if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX
+                    && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX
+                    && worldY+ gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                    worldY - gp.tileSize< gp.player.worldY + gp.player.screenY){
+                g2.drawImage(tile[tileNumber].image,screenX,screenY,gp.tileSize,gp.tileSize,null);
+            }
+
+
+
             worldCol++;
 
 

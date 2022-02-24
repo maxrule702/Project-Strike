@@ -9,12 +9,12 @@ import java.awt.*;
 public class GamePanel extends JPanel implements  Runnable {
     //Screen settings
     final int oringinalTileSize = 32; // 16*16 tile
-    final int scale = 1; //scaling character
+    final int scale = 2; //scaling character
 
     public final int tileSize = oringinalTileSize * scale;
-    public final float maxScreenCol = (float) 24;
+    public final int maxScreenCol =  24;
     public final float maxScreenRow = 14F;
-    public final float screenwidth = tileSize * maxScreenCol; //1080 pixels
+    public final int screenwidth = tileSize * maxScreenCol; //1080 pixels
     public final float screenHeight = tileSize * maxScreenRow; //1920 pixels
 
     //WORLD SETTINGS
