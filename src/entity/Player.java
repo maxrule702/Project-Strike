@@ -22,8 +22,14 @@ public class Player extends Entity {
         setDefultValues();
         getPlayerImage();
         direction = "right1";
-        screenX = (int) (gp.screenwidth / 2 - (gp.tileSize/2));
+        screenX =  (gp.screenwidth / 2 - (gp.tileSize/2));
         screenY = (int) (gp.screenHeight /2- (gp.tileSize/2));
+        soildArea = new Rectangle(8,16,32,32);
+
+
+
+        setDefultValues();
+        getPlayerImage();
     }
 
     public void setDefultValues() {
@@ -57,18 +63,51 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
     public void update() {
         //movement
         if (keyH.upPressed == true) {
-            worldY -= speed;
+
             direction = "up";
         } else if (keyH.downPressed == true) {
-            worldY += speed;
+
             direction = "down";
         } else if (keyH.leftPressed == true) {
-            worldX -= speed;
+
             direction = "left";
         } else if (keyH.rightPressed == true) {
-            worldX += speed;
+
             direction = "right";
         }
+
+        // checking tile collision
+        collisionOn = false;
+        gp.cChecker.checkTile((this));
+
+         //if collsion is false then player can move
+        if (collisionOn == false){
+            switch(direction){
+                case "up":
+                    worldY -= speed;
+                    break;
+
+
+                case "down":
+                    worldY += speed;
+                    break;
+
+
+                case "left":
+                    worldX -= speed;
+                    break;
+
+
+                case "right":
+                    worldX += speed;
+                    break;
+
+
+            }
+        }
+
+
+
 
     }
 
