@@ -5,14 +5,14 @@ importing characters - complete
 advance movement - incomplete
 mouse tracking - incomplete
 npc / hostiles - incomplete
-level creation - incomplete
-map - incomplete
+level creation - complete
+map - complete
 objectives - incomplete
 mutilple player - incomplete
 sever register - incomplete
 health bar - incomplete
 collision dection - incomplete
-camera following - incomplete
+camera following - complete
 music - incomplete
 interaction with world - incomplete
 menu - incomplete
