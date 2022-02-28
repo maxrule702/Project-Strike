@@ -19,23 +19,23 @@ public class Player extends Entity {
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
-        setDefultValues();
+        setDefaultValues();
         getPlayerImage();
-        direction = "right1";
         screenX =  (gp.screenwidth / 2 - (gp.tileSize/2));
         screenY = (int) (gp.screenHeight /2- (gp.tileSize/2));
         soildArea = new Rectangle(8,16,32,32);
 
 
 
-        setDefultValues();
+        setDefaultValues();
         getPlayerImage();
     }
 
-    public void setDefultValues() {
+    public void setDefaultValues() {
          worldX = gp.tileSize * 23;
          worldY = gp.tileSize * 21;
         speed = 4;
+        direction = "right1";
     }
 
 
@@ -63,25 +63,25 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
     public void update() {
         //movement
         if (keyH.upPressed == true) {
-
             direction = "up";
-        } else if (keyH.downPressed == true) {
+        }
 
+        else if (keyH.downPressed == true) {
             direction = "down";
+
         } else if (keyH.leftPressed == true) {
-
             direction = "left";
-        } else if (keyH.rightPressed == true) {
 
+        } else if (keyH.rightPressed == true) {
             direction = "right";
         }
 
         // checking tile collision
-        collisionOn = false;
+        collisonOn = false;
         gp.cChecker.checkTile((this));
 
          //if collsion is false then player can move
-        if (collisionOn == false){
+        if (collisonOn == false){
             switch(direction){
                 case "up":
                     worldY -= speed;
