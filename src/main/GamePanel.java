@@ -114,49 +114,7 @@ repaint();
     }
 //movement
     public void update(){
-
         player.update();
-
-
-if(keyH.upPressed == true){
-    playerY -= playerSpeed;
-}
-else if (keyH.downPressed == true){
-    playerY += playerSpeed;
-}
-
-else if (keyH.leftPressed == true){
-    playerX -= playerSpeed;
-}
-
-else if (keyH.rightPressed == true){
-    playerX += playerSpeed;
-}
-
-else if (keyH.upPressed == false) {
-
-}
-
-else if (keyH.rightPressed == false) {
-
-}
-
-else if (keyH.leftPressed == false) {
-
-}
-
-else if (keyH.downPressed == false) {
-
-}
-
-
-
-
-
-
-
-
-
     }
 
 
