@@ -11,7 +11,7 @@ objectives - incomplete
 mutilple player - incomplete
 sever register - incomplete
 health bar - incomplete
-collision dection - incomplete
+collision dection - complete
 camera following - complete
 music - incomplete
 interaction with world - incomplete
