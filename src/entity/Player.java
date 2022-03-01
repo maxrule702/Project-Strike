@@ -6,6 +6,7 @@ import main.KeyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public class Player extends Entity {
@@ -76,6 +77,27 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
             direction = "right";
         }
 
+
+        else if (keyH.upPressed == false) {
+            direction = "stop";
+        }
+
+        else if (keyH.downPressed == false) {
+            direction = "stop";
+        }
+
+        else if (keyH.leftPressed == false) {
+            direction = "stop";
+        }
+
+        else if (keyH.rightPressed == false) {
+            direction = "stop";
+        }
+
+
+
+
+
         // checking tile collision
         collisonOn = false;
         gp.cChecker.checkTile((this));
@@ -102,7 +124,9 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
                     worldX += speed;
                     break;
 
+                case "stop":
 
+                    break;
             }
         }
 
@@ -134,6 +158,10 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
                 break;
 
             case "right":
+                image = right1;
+                break;
+
+            case "stop":
                 image = right1;
                 break;
 
