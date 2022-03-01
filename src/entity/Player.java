@@ -38,7 +38,7 @@ public class Player extends Entity {
          worldX = gp.tileSize * 23;
          worldY = gp.tileSize * 14;
         speed = 4;
-        direction = "right1";
+        direction = "right";
 
     }
 
@@ -65,95 +65,53 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
 
 
     public void update() {
-        int previous = 0;
         //movement
-        if (keyH.upPressed == true) {
-            direction = "up";
-            prev = 0;
+        if(keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed) {
+            if (keyH.upPressed == true) {
+                direction = "up";
 
-        }
+            } else if (keyH.downPressed == true) {
+                direction = "down";
 
-        else if (keyH.downPressed == true) {
-            direction = "down";
-            prev = 1;
+            } else if (keyH.leftPressed == true) {
+                direction = "left";
 
+            } else if (keyH.rightPressed == true) {
+                direction = "right";
 
-        } else if (keyH.leftPressed == true) {
-            direction = "left";
-            prev = 2;
+            }
+            // checking tile collision
+            collisonOn = false;
+            gp.cChecker.checkTile((this));
 
+            //if collsion is false then player can move
+            if (collisonOn == false) {
+                switch (direction) {
+                    case "up":
+                        worldY -= speed;
+                        break;
 
+                    case "down":
+                        worldY += speed;
+                        break;
 
-        } else if (keyH.rightPressed == true) {
-            direction = "right";
-            prev = 3;
-        }
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
 
-
-        else if (keyH.upPressed == false) {
-            direction = "stop";
-        }
-
-        else if (keyH.downPressed == false) {
-            direction = "stop";
-        }
-
-        else if (keyH.leftPressed == false) {
-            direction = "stop";
-        }
-
-        else if (keyH.rightPressed == false) {
-            direction = "stop";
-        }
-
-
-
-
-
-        // checking tile collision
-        collisonOn = false;
-        gp.cChecker.checkTile((this));
-
-         //if collsion is false then player can move
-        if (collisonOn == false){
-            switch(direction){
-                case "up":
-                    worldY -= speed;
-                    break;
-
-
-                case "down":
-                    worldY += speed;
-                    break;
-
-
-                case "left":
-                    worldX -= speed;
-                    break;
-
-
-                case "right":
-                    worldX += speed;
-                    break;
-
-                case "stop":
-
-                    break;
+                }
             }
         }
-
-
-
-
     }
 
     public void draw(Graphics2D g2) {
 
-
 //        g2.setColor(Color.blue);
 //
 //        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
-
 
         BufferedImage image = null;
         switch(direction){
@@ -172,33 +130,9 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
             case "right":
                 image = right1;
                 break;
-
-            case "stop":
-                  if (prev == 0){
-                      image = up1;
-                  }
-
-                  else if (prev == 1){
-                    image = down1;
-                }
-
-                else if (prev == 2){
-                    image = left1;
-                }
-
-                else if (prev == 3){
-                    image = right1;
-                }
-
-                break;
-
         }
 
-
         g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
-
-
-
 
     }
 }
