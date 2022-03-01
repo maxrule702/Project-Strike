@@ -15,9 +15,11 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
+    public static int prev = 0;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
+
         this.gp = gp;
         this.keyH = keyH;
         setDefaultValues();
@@ -34,9 +36,10 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
          worldX = gp.tileSize * 23;
-         worldY = gp.tileSize * 21;
+         worldY = gp.tileSize * 14;
         speed = 4;
         direction = "right1";
+
     }
 
 
@@ -62,19 +65,28 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
 
 
     public void update() {
+        int previous = 0;
         //movement
         if (keyH.upPressed == true) {
             direction = "up";
+            prev = 0;
+
         }
 
         else if (keyH.downPressed == true) {
             direction = "down";
+            prev = 1;
+
 
         } else if (keyH.leftPressed == true) {
             direction = "left";
+            prev = 2;
+
+
 
         } else if (keyH.rightPressed == true) {
             direction = "right";
+            prev = 3;
         }
 
 
@@ -162,7 +174,22 @@ left1 = ImageIO.read(getClass().getResourceAsStream("/player/spriteLeft.png"));
                 break;
 
             case "stop":
-                image = right1;
+                  if (prev == 0){
+                      image = up1;
+                  }
+
+                  else if (prev == 1){
+                    image = down1;
+                }
+
+                else if (prev == 2){
+                    image = left1;
+                }
+
+                else if (prev == 3){
+                    image = right1;
+                }
+
                 break;
 
         }
