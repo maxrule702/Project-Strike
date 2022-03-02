@@ -2,20 +2,16 @@ package objects;
 
 import javax.imageio.ImageIO;
 
-public class OBJ_Key extends SuperObject {
-    public OBJ_Key() {
+public class ammoKey extends SuperObject {
+    public ammoKey() {
 
-        name = "key";
-        try{
+        name = "ammo";
+        try {
             image = ImageIO.read(getClass().getResourceAsStream("/objects/ammoBox.png"));
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }
+
+

@@ -40,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
     public SuperObject obj[] = new SuperObject[10];
 
 
-    //set player default location
+    //set playerChar default location
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
