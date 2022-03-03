@@ -13,6 +13,9 @@ public class Sound {
     public Sound() {
         //Sound files to go in the sound folder, and then the sound name will go after the "/sound/" bit
         soundURL[0] = getClass().getResource("/sound/RazorMind.wav");
+        soundURL[1] = getClass().getResource("/sound/bomb.wav");
+        soundURL[2] = getClass().getResource("/sound/ammoReload.wav");
+        soundURL[3] = getClass().getResource("/sound/c4Beep.wav");
 
     }
 
