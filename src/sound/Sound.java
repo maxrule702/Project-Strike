@@ -12,7 +12,7 @@ public class Sound {
 
     public Sound() {
         //Sound files to go in the sound folder, and then the sound name will go after the "/sound/" bit
-        soundURL[0] = getClass().getResource("/sound/GameMusic.wav");
+        soundURL[0] = getClass().getResource("/sound/RazorMind.wav");
 
     }
 

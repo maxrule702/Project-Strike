@@ -63,26 +63,23 @@ public class Player extends Entity {
         if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed) {
             if (keyH.upPressed == true) {
                 direction = "up";
-                System.out.println("moving up");
 
             } else if (keyH.downPressed == true) {
                 direction = "down";
-                System.out.println("moving down");
 
             } else if (keyH.leftPressed == true) {
                 direction = "left";
-                System.out.println("moving left");
 
             } else if (keyH.rightPressed == true) {
                 direction = "right";
-                System.out.println("moving right");
+
 
             }
             // checking tile collision
             collisonOn = false;
             gp.cChecker.checkTile((this));
 
-
+            // object collision
             int objIndex = gp.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
 
@@ -92,21 +89,17 @@ public class Player extends Entity {
                 switch (direction) {
                     case "up":
                         worldY -= speed;
-                        System.out.println("moving up...");
                         break;
 
                     case "down":
                         worldY += speed;
-                        System.out.println("moving down...");
                         break;
 
                     case "left":
                         worldX -= speed;
-                        System.out.println("moving left...");
                         break;
                     case "right":
                         worldX += speed;
-                        System.out.println("moving rightd...");
                         break;
 
                 }
