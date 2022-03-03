@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
-
+    public int hit =0;
     public final int screenX;
     public final int screenY;
     int hasKey = 0;
@@ -76,7 +76,7 @@ public class Player extends Entity {
 
             }
             // checking tile collision
-            collisonOn = false;
+            collisionOn = false;
             gp.cChecker.checkTile((this));
 
             // object collision
@@ -85,7 +85,7 @@ public class Player extends Entity {
 
 
             //if collsion is false then playerChar can move
-            if (collisonOn == false) {
+            if (collisionOn == false) {
                 switch (direction) {
                     case "up":
                         worldY -= speed;
@@ -109,6 +109,7 @@ public class Player extends Entity {
 
 
     public void pickUpObject(int i) {
+
         if (i != 999) {
             String objectName = gp.obj[i].name;
 
@@ -123,6 +124,7 @@ public class Player extends Entity {
 
                 case "door":
                     if (hasKey > 0) {
+                        hit++;
                         gp.playSE(1);
                         gp.obj[i] = null;
                         hasKey--;
@@ -144,9 +146,7 @@ public class Player extends Entity {
 
     public void draw(Graphics2D g2) {
 
-//        g2.setColor(Color.blue);
-//
-//        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
+
 
         BufferedImage image = null;
         switch (direction) {

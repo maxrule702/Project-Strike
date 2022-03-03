@@ -6,12 +6,12 @@ public class Entity {
     public int worldX,worldY;
     public int speed;
 
-    public BufferedImage up1,down1,left1,right1,image1,image2,image3,image4,image5,image6;
+    public BufferedImage up1,down1,left1,right1,doorImage1,doorImage2,doorImage3,doorImage4;
     public String direction;
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public Rectangle solidArea;
     public int solidAreaDefaultX, solidAreaDefaultY;
-    public boolean collisonOn = false;
+    public boolean collisionOn = false;
 }
