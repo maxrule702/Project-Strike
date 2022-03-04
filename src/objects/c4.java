@@ -1,13 +1,16 @@
 package objects;
 
+import main.GamePanel;
+
 import javax.imageio.ImageIO;
 
 public class c4 extends  SuperObject{
-    public c4() {
+    GamePanel gp;
+    public c4(GamePanel gp) {
         name = "c4";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/objects/c4.png"));
-
+            utool.scaleImage(image,gp.tileSize, gp.tileSize);
 
         } catch (Exception e) {
             e.printStackTrace();

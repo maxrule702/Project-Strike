@@ -2,6 +2,7 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.UtilityTool;
 
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,10 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     int hasKey = 0;
+    int doorCounter=0;
+    public int doorSprite=0;
+    boolean doorOpening = false;
+    int doorBeingRemoved;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
@@ -54,9 +59,28 @@ public class Player extends Entity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    up1 = setup("spriteUp");
+        right1 = setup("spriteRight");
+
+        down1 = setup("spriteDown");
+
+        left1 = setup("spriteLeft");
 
     }
+public BufferedImage setup(String imageName){
+    UtilityTool uTool  = new UtilityTool();
+    BufferedImage image = null;
+    try{
+        image = ImageIO.read(getClass().getResourceAsStream("/playerChar/"  + imageName + ".png"));
+        image = uTool.scaleImage(image,gp.tileSize,gp.tileSize);
 
+
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return image;
+}
 
     public void update() {
         //movement
@@ -124,7 +148,6 @@ public class Player extends Entity {
 
                 case "door":
                     if (hasKey > 0) {
-                        hit++;
                         gp.playSE(1);
                         gp.obj[i] = null;
                         hasKey--;
@@ -167,7 +190,7 @@ public class Player extends Entity {
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, null);
 
     }
 }

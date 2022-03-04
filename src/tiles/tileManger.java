@@ -1,9 +1,11 @@
 package tiles;
 
 import main.GamePanel;
+import main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,53 +27,40 @@ public class tileManger {
 
     public void getTileImage() {
         try{
-
-            tile[0] = new tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/backupTile.png"));
-
-
-            tile[1] = new tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wallTile.png"));
-            tile[1].collision = true;
-
-            tile[2] = new tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/steelTile.png"));
-            tile[2].collision = true;
-
-            tile[3] = new tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/kitchenTile.png"));
-
-            tile[4] = new tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grassTile.png"));
-
-            tile[5] = new tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dirtTile.png"));
-
-            tile[6] = new tile();
-            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/carpetTile.png"));
-
-            tile[7] = new tile();
-            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/lavaTile.png"));
-            tile[7].collision = true;
-
-
-
-            tile[8] = new tile();
-            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/waterTile.png"));
-            tile[8].collision = true;
-
-
-            tile[9] = new tile();
-            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wood2Tile.png"));
-
-            tile[10] = new tile();
-            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/woodTile.png"));
+//sets the images and collision status
+            setup(0, "backupTile",false);
+            setup(1, "wallTile",true);
+            setup(2, "steelTile",true);
+            setup(3, "kitchenTile",false);
+            setup(4, "grassTile",false);
+            setup(5, "dirtTile",false);
+            setup(6, "carpetTile",false);
+            setup(7, "lavaTile",true);
+            setup(8, "waterTile",true);
+            setup(9, "wood2Tile",false);
+            setup(10, "woodTile",false);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+public void setup(int index,String imagePath,boolean collision){
+    UtilityTool uTool = new UtilityTool();
 
+    try{
+
+     tile[index] = new tile();
+     tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/"+ imagePath + ".png"));
+     tile[index].image = uTool.scaleImage(tile[index].image,gp.tileSize,gp.tileSize);
+     tile[index].collision = collision;
+
+
+
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 
     public void loadMap (String filePath) {
         try{
@@ -135,7 +124,7 @@ public class tileManger {
                     && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX
                     && worldY+ gp.tileSize > gp.player.worldY - gp.player.screenY &&
                     worldY - gp.tileSize< gp.player.worldY + gp.player.screenY){
-                g2.drawImage(tile[tileNumber].image,screenX,screenY,gp.tileSize,gp.tileSize,null);
+                g2.drawImage(tile[tileNumber].image,screenX,screenY,null);
             }
 
 
