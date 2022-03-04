@@ -15,6 +15,10 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     int hasKey = 0;
+    int doorCounter=0;
+    public int doorSprite=0;
+    boolean doorOpening = false;
+    int doorBeingRemoved;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
@@ -104,9 +108,28 @@ public class Player extends Entity {
 
                 }
             }
+
+            if (doorOpening) {
+                doorCounter++;
+                if (doorCounter > 20) {
+                    if (doorSprite == 1) {
+                        doorSprite = 2;
+                    } else if (doorSprite == 2) {
+                        doorSprite = 3;
+                    } else if (doorSprite == 3) {
+                        doorSprite = 4;
+                    } else if (doorSprite == 4) {
+                        doorSprite = 5;
+                        gp.obj[doorBeingRemoved] = null;
+                        doorOpening = false;
+                    } else if (doorSprite == 0) {
+                        doorSprite = 1;
+                    }
+                    doorCounter = 0;
+                }
+            }
         }
     }
-
 
     public void pickUpObject(int i) {
 
@@ -126,7 +149,8 @@ public class Player extends Entity {
                     if (hasKey > 0) {
                         hit++;
                         gp.playSE(1);
-                        gp.obj[i] = null;
+                        doorOpening = true;
+                        doorBeingRemoved= i;
                         hasKey--;
                     }
                     System.out.println("key:" + hasKey);
