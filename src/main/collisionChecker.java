@@ -83,7 +83,7 @@ public  int checkObject(Entity entity, boolean player) {
             gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
             gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
 
-//BROKEN CODE STARTS HERE
+
           switch (entity.direction){
               case "up":
                   entity.solidArea.y -= entity.speed;
@@ -133,7 +133,7 @@ public  int checkObject(Entity entity, boolean player) {
                       break;
                   }
           }
-// ENDS HERE
+
 
             entity.solidArea.x = entity.solidAreaDefaultX;
             entity.solidArea.y = entity.solidAreaDefaultY;
