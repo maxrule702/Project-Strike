@@ -128,28 +128,9 @@ public BufferedImage setup(String imageName){
 
                 }
             }
-
-            if (doorOpening) {
-                doorCounter++;
-                if (doorCounter > 20) {
-                    if (doorSprite == 1) {
-                        doorSprite = 2;
-                    } else if (doorSprite == 2) {
-                        doorSprite = 3;
-                    } else if (doorSprite == 3) {
-                        doorSprite = 4;
-                    } else if (doorSprite == 4) {
-                        doorSprite = 5;
-                        gp.obj[doorBeingRemoved] = null;
-                        doorOpening = false;
-                    } else if (doorSprite == 0) {
-                        doorSprite = 1;
-                    }
-                    doorCounter = 0;
-                }
-            }
         }
     }
+
 
     public void pickUpObject(int i) {
 
@@ -168,8 +149,7 @@ public BufferedImage setup(String imageName){
                 case "door":
                     if (hasKey > 0) {
                         gp.playSE(1);
-                        doorOpening = true;
-                        doorBeingRemoved= i;
+                        gp.obj[i] = null;
                         hasKey--;
                     }
                     System.out.println("key:" + hasKey);
