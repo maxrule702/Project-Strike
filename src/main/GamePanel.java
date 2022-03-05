@@ -21,13 +21,15 @@ public class GamePanel extends JPanel implements Runnable {
     public final float screenHeight = tileSize * maxScreenRow; //1920 pixels
 
     //WORLD SETTINGS
+    //change these setting for map size
     public final int maxWorldCol = 50;
+    //use the editor to make sure it works;
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
 
-    //FPS Limter
+    //FPS Limiter
     int FPS = 60;
 
     tileManger tileM = new tileManger(this);
