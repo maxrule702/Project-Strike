@@ -28,7 +28,7 @@ public class Player extends Entity {
         this.keyH = keyH;
         setDefaultValues();
         getPlayerImage();
-        screenX = (gp.screenwidth / 2 - (gp.tileSize / 2));
+        screenX = (gp.screenWidth / 2 - (gp.tileSize / 2));
         screenY = (int) (gp.screenHeight / 2 - (gp.tileSize / 2));
         solidArea = new Rectangle(8, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
@@ -190,7 +190,26 @@ public BufferedImage setup(String imageName){
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, null);
+
+        int x = screenX;
+        int y = screenY;
+
+        if(screenX > worldX) {
+            x = worldX;
+        }
+        if(screenY > worldY) {
+            y = worldY;
+        }
+        int rightOffset = gp.screenWidth - screenX;
+        if(rightOffset > gp.worldWidth - worldX) {
+            x = gp.screenWidth - (gp.worldWidth - worldX);
+        }
+        float bottomOffset = (gp.screenHeight - screenY);
+        if(bottomOffset > gp.worldHeight - worldY) {
+            y = (int) (gp.screenHeight - (gp.worldHeight - worldY));
+        }
+
+        g2.drawImage(image, x, y, null);
 
     }
 }
