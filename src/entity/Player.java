@@ -12,14 +12,9 @@ import java.awt.image.BufferedImage;
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
-    public int hit =0;
     public final int screenX;
     public final int screenY;
     int hasKey = 0;
-    int doorCounter=0;
-    public int doorSprite=0;
-    boolean doorOpening = false;
-    int doorBeingRemoved;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {

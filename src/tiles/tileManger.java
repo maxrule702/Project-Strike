@@ -27,7 +27,7 @@ public class tileManger {
     public void getTileImage() {
         try{
 //sets the images and collision status
-            setup(0, "backupTile",false);
+            setup(0, "borderTile",true);
             setup(1, "wallTile",true);
             setup(2, "steelTile",true);
             setup(3, "kitchenTile",false);
