@@ -11,10 +11,10 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
     //Screen settings
-    final int oringinalTileSize = 32; // 16*16 tile
+    final int originalTileSize = 32; // 16*16 tile
     final int scale = 2; //scaling character
 
-    public final int tileSize = oringinalTileSize * scale;
+    public final int tileSize = originalTileSize * scale;
     public final int maxScreenCol = 24;
     public final float maxScreenRow = 14F;
     public final int screenWidth = tileSize * maxScreenCol; //1080 pixels
@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // System
     tileManger tileM = new tileManger(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     Sound sound = new Sound();
     public collisionChecker cChecker = new collisionChecker(this);
     public assetSetter aSetter = new assetSetter(this);
