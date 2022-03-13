@@ -18,7 +18,7 @@ GamePanel gp;
         try {
 
             image = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
-            utool.scaleImage(image,gp.tileSize, gp.tileSize);
+            uTool.scaleImage(image,gp.tileSize, gp.tileSize);
         } catch (Exception e) {
             e.printStackTrace();
         }
