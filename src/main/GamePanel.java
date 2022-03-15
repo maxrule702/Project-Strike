@@ -198,7 +198,6 @@ public class GamePanel extends JPanel implements Runnable {
         //player
 
         player.draw(g2);
-        handler.render(g);
 
 
         //debug

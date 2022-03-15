@@ -7,7 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class SuperObject {
-public BufferedImage image;
+public BufferedImage image,image1,image2
+        ;
 public int spriteCount;
 public String name;
 public boolean collision = false;

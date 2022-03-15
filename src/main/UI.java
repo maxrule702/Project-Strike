@@ -1,15 +1,20 @@
 package main;
 
+import objects.OBJ_Heart;
+import objects.SuperObject;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
 public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial_20, arial_40B;
+    BufferedImage emptyHeart, fullHealth, halveHealth;
     //BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
@@ -25,6 +30,10 @@ public class UI {
         arial_40B = new Font ("Arial", Font.BOLD, 40);
         //OBJ Key key = new OBJ_Key(gp);
         //keyImage = key.image;
+        SuperObject heart = new OBJ_Heart(gp);
+        fullHealth = heart.image;
+        halveHealth = heart.image1;
+        emptyHeart = heart.image2;
     }
     public void showMessage(String text) {
         message = text;
@@ -37,12 +46,26 @@ public class UI {
         g2.setColor(Color.white);
 
         if (gp.gameState == gp.playState) {
+            drawPlayerLife(); //shows player life
             //Do playState stuff later
         }
         if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
+            drawPlayerLife();
         }
     }
+
+    public void drawPlayerLife(){
+        int x = gp.tileSize/2;
+        int y = gp.tileSize/2;
+        int i = 0;
+        while (i < gp.player.maxLife /2){
+            g2.drawImage(emptyHeart,x,y,null);
+            i++;
+            x+= gp.tileSize;
+        }
+    }
+
     public void drawPauseScreen() {
 
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,40F));
