@@ -18,7 +18,7 @@ public class tileManger {
     public tileManger(GamePanel gp) {
         this.gp = gp;
 
-        tile = new tile[12]; //tile different limt
+        tile = new tile[12]; //tile different limit
         mapTileNumber = new int [gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
         loadMap("/worldMap.txt");

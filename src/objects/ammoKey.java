@@ -12,7 +12,7 @@ public class ammoKey extends SuperObject {
         name = "ammo";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/objects/ammoBox.png"));
-            utool.scaleImage(image,gp.tileSize, gp.tileSize);
+            uTool.scaleImage(image,gp.tileSize, gp.tileSize);
 
 
         } catch (Exception e) {

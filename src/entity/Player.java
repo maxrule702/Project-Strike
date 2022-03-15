@@ -103,7 +103,7 @@ public BufferedImage setup(String imageName){
             pickUpObject(objIndex);
 
 
-            //if collsion is false then playerChar can move
+            //if collision is false then playerChar can move
             if (collisionOn == false) {
                 switch (direction) {
                     case "up":
