@@ -2,18 +2,23 @@ package main;
 
 import entity.Player;
 import objects.SuperObject;
+import shooting.*;
 import sound.Sound;
 import tiles.tileManger;
+import shooting.Handler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 public class GamePanel extends JPanel implements Runnable {
     //Screen settings
     final int originalTileSize = 32; // 16*16 tile
     final int scale = 2; //scaling character
-
+    Handler handler = new Handler();
+ private shooting.camera camera;
     public final int tileSize = originalTileSize * scale;
     public final int maxScreenCol = 24;
     public final float maxScreenRow = 14F;
@@ -35,6 +40,32 @@ public class GamePanel extends JPanel implements Runnable {
     // System
     tileManger tileM = new tileManger(this);
     KeyHandler keyH = new KeyHandler(this);
+    MouseListener mouse = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    };
     Sound sound = new Sound();
     public collisionChecker cChecker = new collisionChecker(this);
     public assetSetter aSetter = new assetSetter(this);
@@ -52,6 +83,8 @@ public class GamePanel extends JPanel implements Runnable {
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
+
+    camera camera1 = new camera(0,0);
 
 
     public GamePanel() {
@@ -132,6 +165,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         //repaint()
+
+
         super.paintComponent(g);
 
         //update graphics
@@ -149,6 +184,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 
         //tiles
+
         tileM.draw(g2);
 
         //obj
@@ -160,7 +196,10 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         //player
+
         player.draw(g2);
+        handler.render(g);
+
 
         //debug
         if (keyH.checkDrawTime == true){
