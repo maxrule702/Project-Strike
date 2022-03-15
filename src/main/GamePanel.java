@@ -74,6 +74,8 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
 
+    public UI ui = new UI(this);
+
     //Game State
     public int gameState;
     public final int playState = 1;
@@ -155,6 +157,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
         if(gameState == playState) {
             player.update();
+
+
         }
         if (gameState == pauseState) {
             //nothing
@@ -198,6 +202,8 @@ public class GamePanel extends JPanel implements Runnable {
         //player
 
         player.draw(g2);
+
+        ui.draw(g2);
 
 
         //debug
