@@ -70,6 +70,7 @@ public class GamePanel extends JPanel implements Runnable {
     public collisionChecker cChecker = new collisionChecker(this);
     public assetSetter aSetter = new assetSetter(this);
     Thread gameThread;
+    public UI ui = new UI(this);
     // Entity and Object
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
@@ -198,6 +199,8 @@ public class GamePanel extends JPanel implements Runnable {
         //player
 
         player.draw(g2);
+
+        ui.draw(g2);
 
 
         //debug

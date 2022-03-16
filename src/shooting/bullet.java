@@ -9,7 +9,7 @@ public class bullet extends GameObjectShoot {
 
     public bullet(int x, int y, ID id, Handler handler,int mouseX, int mouseY) {
         super(x, y, id);
-        this.handler = this.handler;
+        this.handler = handler;
         velx = (mouseX - x) /10;
         vely = (mouseY - y) /10;
 

@@ -10,7 +10,7 @@ private camera camera;
 
 public mouseInput(Handler handler, shooting.camera camera){
     this.handler = handler;
-    this.camera = this.camera;
+    this.camera = camera;
 }
     public void mousePressed(MouseEvent e){
     int mouseX = (int) (e.getX() + camera.getX());
