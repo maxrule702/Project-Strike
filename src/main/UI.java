@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
 public class UI {
     GamePanel gp;
     Graphics2D g2;
-    Font arial_20, arial_40B;
+    Font arial_20, arial_80B;
     BufferedImage emptyHeart, fullHealth, halveHealth;
     //BufferedImage keyImage;
     public boolean messageOn = false;
@@ -27,7 +27,7 @@ public class UI {
     public UI(GamePanel gp) {
         this.gp = gp;
         arial_20 = new Font ("Arial", Font.PLAIN, 20);
-        arial_40B = new Font ("Arial", Font.BOLD, 40);
+        arial_80B = new Font ("Arial", Font.BOLD, 80);
         //OBJ Key key = new OBJ_Key(gp);
         //keyImage = key.image;
         SuperObject heart = new OBJ_Heart(gp);
@@ -62,13 +62,14 @@ public class UI {
         while (i < gp.player.maxLife /2){
             g2.drawImage(emptyHeart,x,y,null);
             i++;
-            x+= gp.tileSize;
+            x+= gp.tileSize + 4;
         }
     }
 
     public void drawPauseScreen() {
 
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,40F));
+        g2.setFont(arial_80B);
+        g2.setColor(Color.blue);
         String text = "PAUSED";
         int x = getXForCenteredText(text);
         float y = gp.screenHeight/2;
