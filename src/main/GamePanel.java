@@ -18,7 +18,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 32; // 16*16 tile
     final int scale = 2; //scaling character
     Handler handler = new Handler();
- private shooting.camera camera;
+    private shooting.camera camera;
     public final int tileSize = originalTileSize * scale;
     public final int maxScreenCol = 24;
     public final float maxScreenRow = 14F;
@@ -86,7 +86,7 @@ public class GamePanel extends JPanel implements Runnable {
     int playerY = 100;
     int playerSpeed = 4;
 
-    camera camera1 = new camera(0,0);
+    camera camera1 = new camera(0, 0);
 
 
     public GamePanel() {
@@ -101,8 +101,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame() {
         aSetter.setObject();
-        playMusic(0);
+    //    playMusic(0);
         gameState = titleState;
+
     }
 
     public void startGameThread() {
@@ -155,7 +156,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //movement
     public void update() {
-        if(gameState == playState) {
+        if (gameState == playState) {
             player.update();
         }
         if (gameState == pauseState) {
@@ -177,13 +178,13 @@ public class GamePanel extends JPanel implements Runnable {
 
         //debug
         long drawStart = 0;
-        if (keyH.checkDrawTime == true){
+        if (keyH.checkDrawTime == true) {
             drawStart = System.nanoTime();
         }
 
         //Title screen
         if (gameState == titleState) {
-        ui.draw(g2);
+            ui.draw(g2);
         }
         //Others
         else {
@@ -207,25 +208,21 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
 
-
-
         //debug
-        if (keyH.checkDrawTime == true){
+        if (keyH.checkDrawTime == true) {
 
 
-        long drawn = System.nanoTime();
-        long passed = drawn - drawStart;
-        g2.setColor(Color.white);
-        g2.drawString ("draw time:" + passed,10,400);
-        System.out.println("draw time;" + passed);
+            long drawn = System.nanoTime();
+            long passed = drawn - drawStart;
+            g2.setColor(Color.white);
+            g2.drawString("draw time:" + passed, 10, 400);
+            System.out.println("draw time;" + passed);
         }
         //end
         g2.dispose();
 
 
     }
-
-
 
 
     public void playMusic(int i) {
