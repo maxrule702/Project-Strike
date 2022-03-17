@@ -63,14 +63,35 @@ public class UI {
         }
     }
 
-    public void drawPlayerLife(){
-        int x = gp.tileSize/2;
-        int y = gp.tileSize/2;
+    public void drawPlayerLife() {
+    // USE THIS FOR CHANGING THE HEALTH APPEARENCE gp.player.life = 5;
+        int x = gp.tileSize / 2;
+        int y = gp.tileSize / 2;
         int i = 0;
-        while (i < gp.player.maxLife /2){
-            g2.drawImage(emptyHeart,x,y,null);
+        //DRAW MAX LIFE
+        while (i < gp.player.maxLife / 2) {
+            g2.drawImage(fullHealth, x, y, null);
             i++;
-            x+= gp.tileSize + 4;
+            x += gp.tileSize + 4;
+        }
+
+
+//RESET don't forget to add 4 to X+= gp.tilesize for spacing
+         x = gp.tileSize / 2;
+         y = gp.tileSize / 2;
+         i = 0;
+
+        // DRAW CURRENT LIFE
+        while (i < gp.player.life) {
+        g2.drawImage(halveHealth,x,y,null);
+        i++;
+        if(i < gp.player.life){
+            g2.drawImage(emptyHeart,x,y,null);
+        }
+        i++;
+        x += gp.tileSize +4;
+
+
         }
     }
 
