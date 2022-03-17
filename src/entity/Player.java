@@ -105,6 +105,8 @@ public class Player extends Entity {
             int objIndex = gp.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
 
+            //check event
+            gp.eHandler.checkEvent();
 
             //if collision is false then playerChar can move
             if (collisionOn == false) {
