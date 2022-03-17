@@ -1,7 +1,7 @@
 package main;
 
+import entity.Entity;
 import objects.OBJ_Heart;
-import objects.SuperObject;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -31,7 +31,7 @@ public class UI {
         arial_80B = new Font ("Arial", Font.BOLD, 80);
         //OBJ Key key = new OBJ_Key(gp);
         //keyImage = key.image;
-        SuperObject heart = new OBJ_Heart(gp);
+        Entity heart = new OBJ_Heart(gp);
         fullHealth = heart.image;
         halveHealth = heart.image1;
         emptyHeart = heart.image2;
