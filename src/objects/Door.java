@@ -14,6 +14,7 @@ public class Door extends Entity {
         name = "door";
         down1 = setup("/objects/door");
         collision = true;
+        //
     }
 
 }
