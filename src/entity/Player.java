@@ -18,6 +18,7 @@ public class Player extends Entity {
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
+        super(gp);
 
         this.gp = gp;
         this.keyH = keyH;
@@ -39,6 +40,9 @@ public class Player extends Entity {
         worldY = gp.tileSize * 14;
         speed = 4;
         direction = "right";
+        //player status
+        maxLife = 6;
+        life = maxLife;
 
     }
 
@@ -54,7 +58,7 @@ public class Player extends Entity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    up1 = setup("spriteUp");
+        up1 = setup("spriteUp");
         right1 = setup("spriteRight");
 
         down1 = setup("spriteDown");
@@ -62,20 +66,20 @@ public class Player extends Entity {
         left1 = setup("spriteLeft");
 
     }
-public BufferedImage setup(String imageName){
-    UtilityTool uTool  = new UtilityTool();
-    BufferedImage image = null;
-    try{
-        image = ImageIO.read(getClass().getResourceAsStream("/playerChar/"  + imageName + ".png"));
-        image = uTool.scaleImage(image,gp.tileSize,gp.tileSize);
+
+    public BufferedImage setup(String imageName) {
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream("/playerChar/" + imageName + ".png"));
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
 
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return image;
     }
-    return image;
-}
 
     public void update() {
         //movement
@@ -102,8 +106,10 @@ public BufferedImage setup(String imageName){
             int objIndex = gp.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
 
+            //check event
+            gp.eHandler.checkEvent();
 
-            //if collsion is false then playerChar can move
+            //if collision is false then playerChar can move
             if (collisionOn == false) {
                 switch (direction) {
                     case "up":
@@ -131,7 +137,6 @@ public BufferedImage setup(String imageName){
 
         if (i != 999) {
             String objectName = gp.obj[i].name;
-
 
 
             switch (objectName) {
@@ -165,7 +170,6 @@ public BufferedImage setup(String imageName){
     public void draw(Graphics2D g2) {
 
 
-
         BufferedImage image = null;
         switch (direction) {
             case "up":
@@ -189,23 +193,24 @@ public BufferedImage setup(String imageName){
         int x = screenX;
         int y = screenY;
 
-        if(screenX > worldX) {
+        if (screenX > worldX) {
             x = worldX;
         }
-        if(screenY > worldY) {
+        if (screenY > worldY) {
             y = worldY;
         }
         int rightOffset = gp.screenWidth - screenX;
-        if(rightOffset > gp.worldWidth - worldX) {
+        if (rightOffset > gp.worldWidth - worldX) {
             x = gp.screenWidth - (gp.worldWidth - worldX);
         }
         float bottomOffset = (gp.screenHeight - screenY);
-        if(bottomOffset > gp.worldHeight - worldY) {
+        if (bottomOffset > gp.worldHeight - worldY) {
             y = (int) (gp.screenHeight - (gp.worldHeight - worldY));
         }
 
         g2.drawImage(image, x, y, null);
-
+        g2.setColor(Color.red);
+        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
     }
 }
 

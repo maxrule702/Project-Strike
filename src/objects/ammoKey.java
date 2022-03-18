@@ -1,23 +1,15 @@
 package objects;
 
+import entity.Entity;
 import main.GamePanel;
 
-import javax.imageio.ImageIO;
+public class ammoKey extends Entity {
 
-public class ammoKey extends SuperObject {
-
-    GamePanel gp;
     public ammoKey(GamePanel gp) {
-        this.gp = gp;
-        name = "ammo";
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/ammoBox.png"));
-            utool.scaleImage(image,gp.tileSize, gp.tileSize);
+     super(gp);
+                name = "ammo";
+                down1 = setup("/objects/ammoBox");
 
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
 

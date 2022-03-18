@@ -76,10 +76,10 @@ public  int checkObject(Entity entity, boolean player) {
     int i;
     for (i = 0; i < gp.obj.length; i++) {
         if (gp.obj[i] != null) {
-            //get entitys solid area postion
+            //get entities solid area position
             entity.solidArea.x = entity.worldX + entity.solidArea.x;
             entity.solidArea.y = entity.worldY + entity.solidArea.y;
-            //gets the solid area postion
+            //gets the solid area position
             gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
             gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
 
