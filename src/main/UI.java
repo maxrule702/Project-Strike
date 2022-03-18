@@ -64,7 +64,7 @@ public class UI {
     }
 
     public void drawPlayerLife() {
-    // USE THIS FOR CHANGING THE HEALTH APPEARENCE gp.player.life = 5;
+    // USE THIS FOR CHANGING THE HEALTH APPEARANCE gp.player.life = 5;
         int x = gp.tileSize / 2;
         int y = gp.tileSize / 2;
         int i = 0;

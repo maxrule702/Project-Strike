@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
+    public EventHandler eHandler;
 
 
     //FPS Limiter
@@ -189,7 +190,7 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             });
 
-            //draw enitities
+            //draw entities
             for(int i =0; i < entityList.size(); i++){
                 entityList.get(i).draw(g2);
             }
