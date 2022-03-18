@@ -33,7 +33,6 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
-    public EventHandler eHandler;
 
 
     //FPS Limiter
@@ -46,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable {
     Sound sound = new Sound();
     public collisionChecker cChecker = new collisionChecker(this);
     public assetSetter aSetter = new assetSetter(this);
+    public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
     public UI ui = new UI(this);
     // Entity and Object
