@@ -12,7 +12,7 @@ public class Door extends Entity {
     public Door(GamePanel gp) {
         super(gp);
         name = "door";
-        down1 = setup("/objects/door");
+        down1 = setup("/objects/door", gp.tileSize, gp.tileSize);
         collision = true;
         //
     }

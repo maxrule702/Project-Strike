@@ -15,7 +15,7 @@ public class Entity {
     public String direction = "down";
 
 
-    public Rectangle solidArea;
+    public Rectangle solidArea = new Rectangle(0,0,48,48);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
 
@@ -27,7 +27,7 @@ public class Entity {
     public boolean collision = false;
 
     public Entity(GamePanel gp) {
-        gp = gp;
+        this.gp = gp;
     }
 
 
@@ -65,14 +65,15 @@ public class Entity {
         g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
     }
 
-    public BufferedImage setup(String imagePath){
+    public BufferedImage setup(String imagePath,int width,int height) {
         UtilityTool uTool = new UtilityTool();
         BufferedImage image = null;
 
-        try{
+        try {
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
-            image = uTool.scaleImage(image, gp.tileSize,gp.tileSize);
-        } catch (IOException e) {
+            image = uTool.scaleImage(image, width, height);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return image;
