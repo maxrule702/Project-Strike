@@ -66,8 +66,6 @@ public class GamePanel extends JPanel implements Runnable {
     int playerSpeed = 4;
 
 
-
-
     public GamePanel() {
         this.setPreferredSize((new Dimension((int) screenWidth, (int) screenHeight)));
         this.setBackground(new Color(255, 255, 255));
@@ -134,7 +132,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //movement
     public void update() {
-        if(gameState == playState) {
+        if (gameState == playState) {
             player.update();
 
 
@@ -158,13 +156,13 @@ public class GamePanel extends JPanel implements Runnable {
 
         //debug
         long drawStart = 0;
-        if (keyH.checkDrawTime == true){
+        if (keyH.showDebugText == true) {
             drawStart = System.nanoTime();
         }
 
         //Title screen
         if (gameState == titleState) {
-        ui.draw(g2);
+            ui.draw(g2);
         }
 
         //Others
@@ -176,8 +174,8 @@ public class GamePanel extends JPanel implements Runnable {
             entityList.add(player);
 
             //obj
-            for (int i = 0; i <obj.length ; i++) {
-                if(obj [i] != null){
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null) {
                     entityList.add(obj[i]);
                 }
             }
@@ -187,18 +185,17 @@ public class GamePanel extends JPanel implements Runnable {
             Collections.sort(entityList, new Comparator<Entity>() {
                 @Override
                 public int compare(Entity e1, Entity e2) {
-                    int result = Integer.compare(e1.worldY,e2.worldY);
+                    int result = Integer.compare(e1.worldY, e2.worldY);
                     return result;
                 }
             });
 
             //draw entities
-            for(int i =0; i < entityList.size(); i++){
+            for (int i = 0; i < entityList.size(); i++) {
                 entityList.get(i).draw(g2);
             }
             //Empty list
             entityList.clear();
-
 
 
             //player
@@ -209,27 +206,34 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
 
-
         ui.draw(g2);
 
 
         //debug
-        if (keyH.checkDrawTime == true){
+        if (keyH.showDebugText == true) {
 
 
-        long drawn = System.nanoTime();
-        long passed = drawn - drawStart;
-        g2.setColor(Color.white);
-        g2.drawString ("draw time:" + passed,10,400);
-        System.out.println("draw time;" + passed);
+            long drawn = System.nanoTime();
+            long passed = drawn - drawStart;
+            g2.setFont(new Font("Arial", Font.PLAIN, 20));
+            g2.setColor(Color.white);
+            int x = 10;
+            int y = 400;
+            int lineHeight = 20;
+
+            g2.drawString("WorldX" + player.worldX, x, y);  y += lineHeight;
+            g2.drawString("WorldY" + player.worldY, x, y);  y += lineHeight;
+            g2.drawString("Col" + (player.worldX + player.solidArea.x)/tileSize, x, y); y += lineHeight;
+            g2.drawString("Row" + (player.worldY + player.solidArea.y)/tileSize, x, y); y += lineHeight;
+
+            g2.drawString("draw time:" + passed, 10, 400);
+            System.out.println("draw time;" + passed);
         }
         //end
         g2.dispose();
 
 
     }
-
-
 
 
     public void playMusic(int i) {
