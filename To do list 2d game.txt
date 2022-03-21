@@ -1,4 +1,4 @@
-basic movemnt - complete
+basic movement - complete
 creation of some assets - complete
 FPS counter - complete 
 importing characters - complete
@@ -8,17 +8,17 @@ npc / hostiles - incomplete
 level creation - complete
 map - complete
 objectives - incomplete
-mutilple playerChar - incomplete
+multiple playerChar - incomplete
 sever register - incomplete
-health bar - incomplete
-collision dection - complete
+health bar - complete
+collision detection - complete
 camera following - complete
 music - incomplete
 interaction with world - incomplete
-menu - incomplete
-pause menu - incomplete
+menu - complete
+pause menu - complete
 playerChar attacking - incomplete
 inventory - incomplete
 character background - incomplete
 port to android - incomplete
-launch onto google play store - incomplete
+launch onto Google Play Store - incomplete
