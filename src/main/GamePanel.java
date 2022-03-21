@@ -54,8 +54,6 @@ public class GamePanel extends JPanel implements Runnable {
     //array is sorted into the one that has the lowest world Y become index 0 (start at 0)
     ArrayList<Entity> entityList = new ArrayList<>();
 
-    public UI ui = new UI(this);
-
     //Game State
     public int gameState;
     public final int titleState = 0;
@@ -189,7 +187,7 @@ public class GamePanel extends JPanel implements Runnable {
             Collections.sort(entityList, new Comparator<Entity>() {
                 @Override
                 public int compare(Entity e1, Entity e2) {
-                    int result = Integer.compare(e1.worldX,e2.worldY);
+                    int result = Integer.compare(e1.worldY,e2.worldY);
                     return result;
                 }
             });
@@ -199,14 +197,12 @@ public class GamePanel extends JPanel implements Runnable {
                 entityList.get(i).draw(g2);
             }
             //Empty list
-            for(int i =0; i < entityList.size(); i++){
-                entityList.remove(i);
-            }
+            entityList.clear();
 
 
 
             //player
-            player.draw(g2);
+            //player.draw(g2);
 
             //UI
             ui.draw(g2);

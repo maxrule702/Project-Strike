@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
         public c4(GamePanel gp) {
             super(gp);
             name = "c4";
-            down1 = setup("/objects/c4");
+            down1 = setup("/objects/c4", gp.tileSize, gp.tileSize);
 
         }
     }
