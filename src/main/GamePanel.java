@@ -1,24 +1,25 @@
 package main;
 
+import entity.Entity;
 import entity.Player;
-import objects.SuperObject;
-import shooting.*;
+
 import sound.Sound;
 import tiles.tileManger;
-import shooting.Handler;
+
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class GamePanel extends JPanel implements Runnable {
     //Screen settings
     final int originalTileSize = 32; // 16*16 tile
     final int scale = 2; //scaling character
-    Handler handler = new Handler();
- private shooting.camera camera;
+
+
     public final int tileSize = originalTileSize * scale;
     public final int maxScreenCol = 24;
     public final float maxScreenRow = 14F;
@@ -40,44 +41,24 @@ public class GamePanel extends JPanel implements Runnable {
     // System
     tileManger tileM = new tileManger(this);
     KeyHandler keyH = new KeyHandler(this);
-    MouseListener mouse = new MouseListener() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
 
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-    };
     Sound sound = new Sound();
     public collisionChecker cChecker = new collisionChecker(this);
     public assetSetter aSetter = new assetSetter(this);
+    public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
+    public UI ui = new UI(this);
     // Entity and Object
     public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[10];
+    public Entity obj[] = new Entity[10];
+    //array is sorted into the one that has the lowest world Y become index 0 (start at 0)
+    ArrayList<Entity> entityList = new ArrayList<>();
 
     public UI ui = new UI(this);
 
     //Game State
     public int gameState;
+    public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
 
@@ -86,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
     int playerY = 100;
     int playerSpeed = 4;
 
-    camera camera1 = new camera(0,0);
+
 
 
     public GamePanel() {
@@ -102,7 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         aSetter.setObject();
         playMusic(0);
-        gameState = playState;
+        gameState = titleState;
     }
 
     public void startGameThread() {
@@ -183,25 +164,55 @@ public class GamePanel extends JPanel implements Runnable {
             drawStart = System.nanoTime();
         }
 
-
-
-
-
-        //tiles
-
-        tileM.draw(g2);
-
-        //obj
-        for (int i = 0; i < obj.length; i++) {
-            if (obj[i] != null) {
-                obj[i].draw(g2, this);
-            }
-
+        //Title screen
+        if (gameState == titleState) {
+        ui.draw(g2);
         }
 
-        //player
+        //Others
+        else {
 
-        player.draw(g2);
+            //tiles
+            tileM.draw(g2);
+            //adds player to entity list
+            entityList.add(player);
+
+            //obj
+            for (int i = 0; i <obj.length ; i++) {
+                if(obj [i] != null){
+                    entityList.add(obj[i]);
+                }
+            }
+
+
+            //sort
+            Collections.sort(entityList, new Comparator<Entity>() {
+                @Override
+                public int compare(Entity e1, Entity e2) {
+                    int result = Integer.compare(e1.worldX,e2.worldY);
+                    return result;
+                }
+            });
+
+            //draw entities
+            for(int i =0; i < entityList.size(); i++){
+                entityList.get(i).draw(g2);
+            }
+            //Empty list
+            for(int i =0; i < entityList.size(); i++){
+                entityList.remove(i);
+            }
+
+
+
+            //player
+            player.draw(g2);
+
+            //UI
+            ui.draw(g2);
+        }
+
+
 
         ui.draw(g2);
 

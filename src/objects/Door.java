@@ -1,5 +1,6 @@
 package objects;
 
+import entity.Entity;
 import entity.Player;
 import main.GamePanel;
 import org.ietf.jgss.GSSManager;
@@ -7,22 +8,13 @@ import org.ietf.jgss.GSSManager;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-public class Door extends  SuperObject{
-GamePanel gp;
-
+public class Door extends Entity {
     public Door(GamePanel gp) {
-        this.gp = gp;
+        super(gp);
         name = "door";
-
-
-        try {
-
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
-            uTool.scaleImage(image,gp.tileSize, gp.tileSize);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        down1 = setup("/objects/door");
         collision = true;
+        //
     }
 
 }
