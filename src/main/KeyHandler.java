@@ -10,7 +10,7 @@ public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 
     //debug
-    boolean showDebugText;
+    public boolean showDebugText;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;

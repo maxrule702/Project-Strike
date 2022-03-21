@@ -78,7 +78,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame() {
         aSetter.setObject();
-        playMusic(0);
         gameState = titleState;
     }
 
@@ -226,8 +225,11 @@ public class GamePanel extends JPanel implements Runnable {
             g2.drawString("Col" + (player.worldX + player.solidArea.x)/tileSize, x, y); y += lineHeight;
             g2.drawString("Row" + (player.worldY + player.solidArea.y)/tileSize, x, y); y += lineHeight;
 
-            g2.drawString("draw time:" + passed, 10, 400);
+            g2.drawString("draw time:" + passed, 10, 600);
             System.out.println("draw time;" + passed);
+
+
+
         }
         //end
         g2.dispose();

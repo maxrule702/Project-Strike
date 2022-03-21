@@ -2,13 +2,17 @@ package main;
 
 import entity.Entity;
 import objects.OBJ_Heart;
+import sound.Sound;
 
+import javax.sound.sampled.Clip;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
+
+
 
 public class UI {
     GamePanel gp;
@@ -24,7 +28,7 @@ public class UI {
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
-
+    Sound sound = new Sound();
     public UI(GamePanel gp) {
         this.gp = gp;
         arial_20 = new Font ("Arial", Font.PLAIN, 20);
@@ -49,6 +53,7 @@ public class UI {
         //Title State
         if(gp.gameState == gp.titleState) {
            drawTitleScreen();
+
         }
 
         //Play State

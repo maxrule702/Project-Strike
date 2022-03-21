@@ -209,8 +209,11 @@ public class Player extends Entity {
         }
 
         g2.drawImage(image, x, y, null);
-        g2.setColor(Color.red);
-        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+        if (keyH.showDebugText == true) {
+
+            g2.setColor(Color.red);
+            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width+15, solidArea.height+10);
+        }
     }
 }
 
