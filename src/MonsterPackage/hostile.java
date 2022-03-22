@@ -18,7 +18,10 @@ public class hostile extends Entity {
 
     }
     public  void getImage(){
+        up1 = setup("combine",gp.tileSize,gp.tileSize);
         right1 = setup("combine",gp.tileSize,gp.tileSize);
+        down1 = setup("combine",gp.tileSize,gp.tileSize);
+        left1 = setup("combine",gp.tileSize,gp.tileSize);
 
     }
 
