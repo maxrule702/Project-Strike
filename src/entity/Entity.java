@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Entity {
     public int worldX,worldY;
     public int speed;
-    GamePanel gp;
+    public GamePanel gp;
     public BufferedImage up1,down1,left1,right1,doorImage1,doorImage2,doorImage3,doorImage4;
     public String direction = "down";
 
@@ -29,7 +29,32 @@ public class Entity {
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
+        public void setAction(){}
+    public void update(){
 
+        setAction();
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+        if (collisionOn == false) {
+            switch (direction) {
+                case "up":
+                    worldY -= speed;
+                    break;
+
+                case "down":
+                    worldY += speed;
+                    break;
+
+                case "left":
+                    worldX -= speed;
+                    break;
+                case "right":
+                    worldX += speed;
+                    break;
+
+            }
+        }
+    }
 
 
 

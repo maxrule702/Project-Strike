@@ -1,5 +1,6 @@
 package main;
 
+import MonsterPackage.hostile;
 import objects.Door;
 import objects.ammoKey;
 import objects.c4;
@@ -31,4 +32,14 @@ public class assetSetter {
         gp.obj[4].worldY = 17 * gp.tileSize;
 
     }
+
+    public void setHostile(){
+        gp.hostile[1]= new hostile(gp);
+        gp.hostile[1].worldX = gp.tileSize *23;
+        gp.hostile[1].worldY = gp.tileSize *20;
+
+
+
+    }
+
 }
