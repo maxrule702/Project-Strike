@@ -59,6 +59,7 @@ public class Player extends Entity {
             e.printStackTrace();
         }
         up1 = setup("spriteUp");
+
         right1 = setup("spriteRight");
 
         down1 = setup("spriteDown");
@@ -105,6 +106,12 @@ public class Player extends Entity {
             // object collision
             int objIndex = gp.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
+
+
+            //hostile collsion
+
+            int hostileIndex = gp.cChecker.checkEntity(this, gp.hostile);
+
 
             //check event
             gp.eHandler.checkEvent();

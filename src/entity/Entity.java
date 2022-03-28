@@ -13,7 +13,7 @@ public class Entity {
     public GamePanel gp;
     public BufferedImage up1,down1,left1,right1,doorImage1,doorImage2,doorImage3,doorImage4;
     public String direction = "down";
-
+    public int actionLockCounter = 0;
 
     public Rectangle solidArea = new Rectangle(0,0,48,48);
     public int solidAreaDefaultX, solidAreaDefaultY;
@@ -37,6 +37,9 @@ public class Entity {
         setAction();
         collisionOn = false;
         gp.cChecker.checkTile(this);
+        gp.cChecker.checkEntity(this,gp.hostile);
+
+
         if (collisionOn == false) {
             switch (direction) {
                 case "up":

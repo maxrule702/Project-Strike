@@ -11,22 +11,22 @@ public class hostile extends Entity {
         super(gp);
 
         name = "combine";
-        speed = 2;
+        speed = 1;
         maxLife = 4;
         life = maxLife;
         getImage();
 
     }
     public  void getImage(){
-        up1 = setup("combine",gp.tileSize,gp.tileSize);
-        right1 = setup("combine",gp.tileSize,gp.tileSize);
-        down1 = setup("combine",gp.tileSize,gp.tileSize);
-        left1 = setup("combine",gp.tileSize,gp.tileSize);
+        up1 = setup("combineUP",gp.tileSize,gp.tileSize);
+        right1 = setup("combineRight",gp.tileSize,gp.tileSize);
+        down1 = setup("combineDown",gp.tileSize,gp.tileSize);
+        left1 = setup("combineLeft",gp.tileSize,gp.tileSize);
 
     }
 
     public void setAction(){
-        int actionLockCounter=0;
+
         actionLockCounter ++;
 
 
