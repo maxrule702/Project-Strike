@@ -17,15 +17,15 @@ public class assetSetter {
 
         gp.obj[1] = new c4(gp);
         gp.obj[1].worldX = 23 * gp.tileSize;
-        gp.obj[1].worldY = 12 * gp.tileSize;
+        gp.obj[1].worldY = 13 * gp.tileSize;
 
         gp.obj[2] = new Door(gp);
         gp.obj[2].worldX = 31 * gp.tileSize;
-        gp.obj[2].worldY = 5 * gp.tileSize;
+        gp.obj[2].worldY = 11 * gp.tileSize;
 
         gp.obj[3] = new Door(gp);
         gp.obj[3].worldX = 32 * gp.tileSize;
-        gp.obj[3].worldY = 5 * gp.tileSize;
+        gp.obj[3].worldY = 11 * gp.tileSize;
 
 
 
@@ -33,13 +33,13 @@ public class assetSetter {
 
     public void setHostile(){
         gp.hostile[0]= new hostile(gp);
-        gp.hostile[0].worldX = gp.tileSize *32;
-        gp.hostile[0].worldY = gp.tileSize *4;
+        gp.hostile[0].worldX = gp.tileSize *31;
+        gp.hostile[0].worldY = gp.tileSize *13;
 
 
         gp.hostile[1]= new hostile(gp);
-        gp.hostile[1].worldX = gp.tileSize *31;
-        gp.hostile[1].worldY = gp.tileSize *4;
+        gp.hostile[1].worldX = gp.tileSize *32;
+        gp.hostile[1].worldY = gp.tileSize *13;
 
 
     }

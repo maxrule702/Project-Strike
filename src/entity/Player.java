@@ -37,7 +37,7 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
         worldX = gp.tileSize * 11;
-        worldY = gp.tileSize * 14;
+        worldY = gp.tileSize * 17;
         speed = 4;
         direction = "right";
         //player status
@@ -140,7 +140,7 @@ public class Player extends Entity {
         }
         if (invincible ==true){
             invincibleCounter++;
-            if(invincibleCounter > 60){
+            if(invincibleCounter > 10){
                 invincible =false;
                 invincibleCounter =0;
             }
@@ -244,7 +244,7 @@ public class Player extends Entity {
 
             //Debug
             g2.setFont(new Font("Arial",Font.PLAIN,26));
-            g2.drawString("damageCoolDown" + invincibleCounter,10,400);
+            g2.drawString("damageCoolDown" + invincibleCounter,10,550);
         }
     }
 }
