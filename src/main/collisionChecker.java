@@ -103,7 +103,6 @@ public  int checkObject(Entity entity, boolean player) {
                     entity.solidArea.y += entity.speed;
                     break;
 
-
                 case "left":
                     entity.solidArea.x -= entity.speed;
                     break;

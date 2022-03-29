@@ -28,13 +28,13 @@ public class tileManger {
         try{
 //sets the images and collision status
             setup(0, "borderTile",true);
-            setup(1, "wallTile",true);
-            setup(2, "steelTile",true);
-            setup(3, "kitchenTile",false);
-            setup(4, "grassTile",false);
-            setup(5, "dirtTile",false);
-            setup(6, "carpetTile",false);
-            setup(7, "lavaTile",true);
+            setup(7, "wallTile",true);
+            setup(5, "steelTile",true);
+            setup(4, "kitchenTile",false);
+            setup(3, "grassTile",false);
+            setup(2, "dirtTile",false);
+            setup(1, "carpetTile",false);
+            setup(6, "lavaTile",true);
             setup(8, "waterTile",true);
             setup(9, "wood2Tile",false);
             setup(10, "woodTile",false);
