@@ -9,7 +9,7 @@ public class hostile extends Entity {
 
     public hostile(GamePanel gp) {
         super(gp);
-
+        type = 2;
         name = "combine";
         speed = 1;
         maxLife = 4;

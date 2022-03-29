@@ -1,13 +1,15 @@
 package entity;
-
+import java.util.concurrent.TimeUnit;
 import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
+import sound.Sound;
 
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Player extends Entity {
     GamePanel gp;
@@ -15,7 +17,7 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     int hasKey = 0;
-
+    Sound sound = new Sound();
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
@@ -140,7 +142,7 @@ public class Player extends Entity {
         }
         if (invincible ==true){
             invincibleCounter++;
-            if(invincibleCounter > 10){
+            if(invincibleCounter > 30){
                 invincible =false;
                 invincibleCounter =0;
             }
@@ -233,7 +235,30 @@ public class Player extends Entity {
             y = (int) (gp.screenHeight - (gp.worldHeight - worldY));
         }
 
-        g2.drawImage(image, x, y, null);
+        int playcount = 0;
+
+        if (invincible == true) {
+            g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f)));
+        }
+
+        if (invincibleCounter == 15) {
+
+            if (playcount == 0) {
+                sound.setFile(4);
+                sound.play();
+                playcount++;
+            }
+        }
+
+
+
+
+            g2.drawImage(image, x, y, null);
+        //rest alpha
+        g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1)));
+
+
+
         if (keyH.showDebugText == true) {
 
             g2.setColor(Color.red);

@@ -18,6 +18,7 @@ public class Entity {
     public Rectangle solidArea = new Rectangle(0,0,48,48);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+    public int type; // o = player, 1 = npc, 2 = hostile
 
 
     //CHARACTER HEALTH
@@ -38,7 +39,13 @@ public class Entity {
         collisionOn = false;
         gp.cChecker.checkTile(this);
         gp.cChecker.checkEntity(this,gp.hostile);
-
+        boolean contactplayer = gp.cChecker.checkPlayer(this);
+if (this.type ==2 && contactplayer == true){
+    if (gp.player.invincible == false){
+        gp.player.life -=1;
+        gp.player.invincible = true;
+    }
+}
 
         if (collisionOn == false) {
             switch (direction) {
