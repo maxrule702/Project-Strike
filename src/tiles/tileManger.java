@@ -125,11 +125,11 @@ public void setup(int index,String imagePath,boolean collision){
             if (gp.player.screenY > gp.player.worldY) {
                 screenY = worldY;
             }
-            int rightOffset = gp.screenWidth - gp.player.screenX;
+            int rightOffset = gp.screenWidth - gp.player.screenX ;
             if(rightOffset > gp.worldWidth - gp.player.worldX) {
                 screenX = gp.screenWidth - (gp.worldWidth - worldX);
             }
-            float bottomOffset = gp.screenHeight - gp.player.screenY;
+            float bottomOffset = gp.screenHeight - gp.player.screenY ;
             if(bottomOffset > gp.worldHeight - gp.player.worldY) {
                 screenY = (int) (gp.screenHeight - (gp.worldHeight - worldY));
             }

@@ -33,13 +33,13 @@ public class assetSetter {
 
     public void setHostile(){
         gp.hostile[0]= new hostile(gp);
-        gp.hostile[0].worldX = gp.tileSize *37;
-        gp.hostile[0].worldY = gp.tileSize *25;
+        gp.hostile[0].worldX = gp.tileSize *32;
+        gp.hostile[0].worldY = gp.tileSize *4;
 
 
         gp.hostile[1]= new hostile(gp);
-        gp.hostile[1].worldX = gp.tileSize *40;
-        gp.hostile[1].worldY = gp.tileSize *27;
+        gp.hostile[1].worldX = gp.tileSize *31;
+        gp.hostile[1].worldY = gp.tileSize *4;
 
 
     }

@@ -5,7 +5,6 @@ import main.UtilityTool;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class Entity {
     public int worldX,worldY;
@@ -14,7 +13,8 @@ public class Entity {
     public BufferedImage up1,down1,left1,right1,doorImage1,doorImage2,doorImage3,doorImage4;
     public String direction = "down";
     public int actionLockCounter = 0;
-
+ public boolean invincible = false;
+ public int invincibleCounter = 0;
     public Rectangle solidArea = new Rectangle(0,0,48,48);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;

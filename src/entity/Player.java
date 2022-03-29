@@ -84,6 +84,7 @@ public class Player extends Entity {
 
     public void update() {
         //movement
+
         if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed) {
             if (keyH.upPressed == true) {
                 direction = "up";
@@ -111,7 +112,7 @@ public class Player extends Entity {
             //hostile collsion
 
             int hostileIndex = gp.cChecker.checkEntity(this, gp.hostile);
-
+            contactHostile(hostileIndex);
 
             //check event
             gp.eHandler.checkEvent();
@@ -135,6 +136,13 @@ public class Player extends Entity {
                         break;
 
                 }
+            }
+        }
+        if (invincible ==true){
+            invincibleCounter++;
+            if(invincibleCounter > 60){
+                invincible =false;
+                invincibleCounter =0;
             }
         }
     }
@@ -173,7 +181,17 @@ public class Player extends Entity {
             }
         }
     }
+ public void contactHostile(int i){
+        if(i != 999){
 
+            if(invincible == false) {
+                life -= 1;
+                invincible = true;
+            }
+
+
+        }
+ }
     public void draw(Graphics2D g2) {
 
 
@@ -220,6 +238,13 @@ public class Player extends Entity {
 
             g2.setColor(Color.red);
             g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width+15, solidArea.height+10);
+
+
+
+
+            //Debug
+            g2.setFont(new Font("Arial",Font.PLAIN,26));
+            g2.drawString("damageCoolDown" + invincibleCounter,10,400);
         }
     }
 }
