@@ -11,13 +11,17 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
     int hasKey = 0;
+    public int spriteCounter;
+    public int spriteNum = 0;
     Sound sound = new Sound();
+
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
@@ -35,6 +39,7 @@ public class Player extends Entity {
 
         setDefaultValues();
         getPlayerImage();
+        getPlayerAttackImage();
     }
 
     public void setDefaultValues() {
@@ -57,6 +62,7 @@ public class Player extends Entity {
             left1 = ImageIO.read(getClass().getResourceAsStream("/playerChar/spriteLeft.png"));
 
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,6 +75,21 @@ public class Player extends Entity {
         left1 = setup("spriteLeft");
 
     }
+
+    public  void getPlayerAttackImage(){
+        attackUp1 = setup("/entity/spriteKnifeHoldUp1", gp.tileSize*2,gp.tileSize*2);
+        attackRight1 = setup("/entity/spriteKnifeHoldRight1" ,gp.tileSize*2,gp.tileSize*2);
+        attackDown1 = setup("/entity/spriteKnifeHoldDown1" ,gp.tileSize*2,gp.tileSize*2);
+        attackLeft1 = setup("/entity/spriteKnifeHoldLeft1" ,gp.tileSize*2,gp.tileSize*2);
+
+        attackUp2 = setup("/entity/spriteKnifeStabbingUp2", gp.tileSize*2,gp.tileSize*2);
+        attackRight2 = setup("/entity/spriteKnifeStabbingRight2" ,gp.tileSize*2,gp.tileSize*2);
+        attackDown2 = setup("/entity/spriteKnifeStabbingDown2" ,gp.tileSize*2,gp.tileSize*2);
+        attackLeft2 = setup("/entity/spriteKnifeStabbingLeft2" ,gp.tileSize*2,gp.tileSize*2);
+
+    }
+
+
 
     public BufferedImage setup(String imageName) {
         UtilityTool uTool = new UtilityTool();
@@ -87,11 +108,16 @@ public class Player extends Entity {
     public void update() {
         //movement
 
-        if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed) {
+
+ if(attacking == true){
+     attacking();
+ }
+        else if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed || keyH.spacePressed)  {
             if (keyH.upPressed == true) {
                 direction = "up";
+            }
 
-            } else if (keyH.downPressed == true) {
+             else if (keyH.downPressed == true) {
                 direction = "down";
 
             } else if (keyH.leftPressed == true) {
@@ -99,9 +125,18 @@ public class Player extends Entity {
 
             } else if (keyH.rightPressed == true) {
                 direction = "right";
+            }
 
+            else if (keyH.spacePressed == true){
+
+                attacking = true;
 
             }
+
+
+
+
+
             // checking tile collision
             collisionOn = false;
             gp.cChecker.checkTile((this));
@@ -137,6 +172,7 @@ public class Player extends Entity {
                         worldX += speed;
                         break;
 
+
                 }
             }
         }
@@ -147,6 +183,25 @@ public class Player extends Entity {
                 invincibleCounter =0;
             }
         }
+    }
+
+
+    public void attacking() {
+        spriteCounter++;
+
+
+        if (spriteCounter <= 5){
+            spriteNum = 1;
+        }
+        if (spriteCounter > 5 && spriteCounter <= 25){
+            spriteNum = 2;
+        }
+        if (spriteCounter > 25){
+            spriteNum = 1;
+            spriteCounter = 0;
+            attacking = false;
+        }
+
     }
 
 
@@ -200,19 +255,47 @@ public class Player extends Entity {
         BufferedImage image = null;
         switch (direction) {
             case "up":
-                image = up1;
+                if (attacking == true){
+                    if(spriteNum ==1){image = attackUp1;}
+                    if(spriteNum ==2){image = attackUp2;}
+                }
+
+                if (attacking == false){
+                    image = up1;
+                }
                 break;
 
             case "down":
-                image = down1;
+                if (attacking == true){
+                    if(spriteNum ==1){image = attackDown1;}
+                    if(spriteNum ==2){image = attackDown2;}
+                }
+
+                if (attacking == false){
+                    image = down1;
+                }
                 break;
 
             case "left":
-                image = left1;
+                if (attacking == true){
+                    if(spriteNum ==1){image = attackLeft1;}
+                    if(spriteNum ==2){image = attackLeft2;}
+                }
+
+                if (attacking == false){
+                    image = left1;
+                }
                 break;
 
             case "right":
-                image = right1;
+                if (attacking == true){
+                    if(spriteNum ==1){image = attackRight1;}
+                    if(spriteNum ==2){image = attackRight2;}
+                }
+
+                if (attacking == false){
+                    image = right1;
+                }
                 break;
         }
 

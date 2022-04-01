@@ -11,6 +11,7 @@ public class Entity {
     public int speed;
     public GamePanel gp;
     public BufferedImage up1,down1,left1,right1,doorImage1,doorImage2,doorImage3,doorImage4;
+    public BufferedImage attackUp1,attackRight1,attackDown1, attackLeft1, attackUp2,attackRight2, attackDown2, attackLeft2;
     public String direction = "down";
     public int actionLockCounter = 0;
  public boolean invincible = false;
@@ -19,7 +20,7 @@ public class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
     public int type; // o = player, 1 = npc, 2 = hostile
-
+   public boolean attacking = false;
 
     //CHARACTER HEALTH
     public int maxLife;
@@ -105,6 +106,7 @@ if (this.type ==2 && contactplayer == true){
     public BufferedImage setup(String imagePath,int width,int height) {
         UtilityTool uTool = new UtilityTool();
         BufferedImage image = null;
+
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
