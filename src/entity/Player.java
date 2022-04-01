@@ -77,15 +77,15 @@ public class Player extends Entity {
     }
 
     public  void getPlayerAttackImage(){
-        attackUp1 = setup("/entity/spriteKnifeHoldUp1", gp.tileSize*2,gp.tileSize*2);
-        attackRight1 = setup("/entity/spriteKnifeHoldRight1" ,gp.tileSize*2,gp.tileSize*2);
-        attackDown1 = setup("/entity/spriteKnifeHoldDown1" ,gp.tileSize*2,gp.tileSize*2);
-        attackLeft1 = setup("/entity/spriteKnifeHoldLeft1" ,gp.tileSize*2,gp.tileSize*2);
+        attackUp1 = setup("/entity/spriteKnifeHoldUp1", gp.tileSize+12,gp.tileSize+12 );
+        attackRight1 = setup("/entity/spriteKnifeHoldRight1" ,gp.tileSize+12,gp.tileSize+12);
+        attackDown1 = setup("/entity/spriteKnifeHoldDown1" ,gp.tileSize+12,gp.tileSize+12);
+        attackLeft1 = setup("/entity/spriteKnifeHoldLeft1" ,gp.tileSize+12,gp.tileSize+12);
 
-        attackUp2 = setup("/entity/spriteKnifeStabbingUp2", gp.tileSize*2,gp.tileSize*2);
-        attackRight2 = setup("/entity/spriteKnifeStabbingRight2" ,gp.tileSize*2,gp.tileSize*2);
-        attackDown2 = setup("/entity/spriteKnifeStabbingDown2" ,gp.tileSize*2,gp.tileSize*2);
-        attackLeft2 = setup("/entity/spriteKnifeStabbingLeft2" ,gp.tileSize*2,gp.tileSize*2);
+        attackUp2 = setup("/entity/spriteKnifeStabbingUp2", gp.tileSize+12,gp.tileSize+12);
+        attackRight2 = setup("/entity/spriteKnifeStabbingRight2" ,gp.tileSize+12,gp.tileSize+12);
+        attackDown2 = setup("/entity/spriteKnifeStabbingDown2" ,gp.tileSize+12,gp.tileSize+12);
+        attackLeft2 = setup("/entity/spriteKnifeStabbingLeft2" ,gp.tileSize+12,gp.tileSize+12);
 
     }
 
@@ -250,7 +250,8 @@ public class Player extends Entity {
         }
  }
     public void draw(Graphics2D g2) {
-
+int tempScreenX = screenX;
+int tempScreenY = screenY;
 
         BufferedImage image = null;
         switch (direction) {
@@ -336,7 +337,7 @@ public class Player extends Entity {
 
 
 
-            g2.drawImage(image, x, y, null);
+            g2.drawImage(image,tempScreenX,tempScreenY, null);
         //rest alpha
         g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1)));
 
