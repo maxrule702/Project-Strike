@@ -3,6 +3,7 @@ package sound;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.net.URL;
 
 public class Sound {
@@ -17,6 +18,10 @@ public class Sound {
         soundURL[2] = getClass().getResource("/sound/ammoReload.wav");
         soundURL[3] = getClass().getResource("/sound/c4Beep.wav");
         soundURL[4] = getClass().getResource("/sound/damageTakenSound.wav");
+        soundURL[5] = getClass().getResource("/sound/meleeSound.wav");
+        soundURL[6] = getClass().getResource("/sound/deathSound.wav");
+
+
 
     }
 
@@ -26,6 +31,12 @@ public class Sound {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
+
+            FloatControl gainControl =
+                    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
+            clip.start();
+
 
         } catch (Exception e) {
 

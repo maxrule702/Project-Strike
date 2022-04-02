@@ -21,6 +21,7 @@ public class Entity {
     public boolean collisionOn = false;
     public int type; // o = player, 1 = npc, 2 = hostile
    public boolean attacking = false;
+   public Rectangle attackArea = new Rectangle(0,0,0,0);
 
     //CHARACTER HEALTH
     public int maxLife;
@@ -67,7 +68,25 @@ if (this.type ==2 && contactplayer == true){
 
             }
         }
+
+
+        if (invincible ==true){
+            invincibleCounter++;
+            if(invincibleCounter > 15){
+                invincible =false;
+                invincibleCounter =0;
+            }
+        }
     }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -100,7 +119,14 @@ if (this.type ==2 && contactplayer == true){
                 image = right1;
                 break;
         }
+        if (invincible == true) {
+            g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f)));
+        }
+
         g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
+
+        g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f)));
+
     }
 
     public BufferedImage setup(String imagePath,int width,int height) {

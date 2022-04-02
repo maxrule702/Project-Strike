@@ -35,6 +35,9 @@ public class Player extends Entity {
         solidArea = new Rectangle(8, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
+        attackArea.width = 36;
+        attackArea.height = 36;
+
 
 
         setDefaultValues();
@@ -135,6 +138,7 @@ public class Player extends Entity {
 
                 attacking = true;
 
+
             }
 
 
@@ -196,9 +200,43 @@ public class Player extends Entity {
 
         if (spriteCounter <= 5){
             spriteNum = 1;
+            sound.setFile(5);
+            sound.play();
+
         }
         if (spriteCounter > 5 && spriteCounter <= 25){
             spriteNum = 2;
+
+            //saves current World X and world Y and solid area
+            int currentWorldX = worldX;
+            int currentWorldY = worldY;
+            int solidAreaWidth = solidArea.width;
+            int solidAreaHeight = solidArea.height;
+
+            //adjusts players world X /Y for the attackArea
+
+            switch (direction){
+                case "up": worldY -= attackArea.height; break;
+                case "down": worldY += attackArea.height; break;
+                case "left": worldX -= attackArea.width; break;
+                case "right": worldX += attackArea.width; break;
+            }
+
+            solidArea.width = attackArea.width;
+            solidArea.height = attackArea.height;
+
+            int hostileIndex = gp.cChecker.checkEntity(this,gp.hostile);
+            damageHostile(hostileIndex);
+
+
+
+            worldX = currentWorldX;
+            worldY = currentWorldY;
+            solidArea.width = solidAreaWidth;
+            solidArea.height = solidAreaHeight;
+
+
+
         }
         if (spriteCounter > 25){
             spriteNum = 1;
@@ -249,10 +287,31 @@ public class Player extends Entity {
                 life -= 1;
                 invincible = true;
             }
-
-
         }
  }
+
+
+ public void damageHostile (int i){
+        if(i != 999){
+           if(gp.hostile[i].invincible == false){
+               gp.hostile[i].life-=1;
+               gp.hostile[i].invincible = true;
+
+
+
+               if(gp.hostile[i].life <= 0){
+                   gp.hostile[i]=null;
+                   sound.setFile(6);
+                   sound.play();
+               }
+           }
+        }
+ }
+
+
+
+
+
     public void draw(Graphics2D g2) {
 int tempScreenX = screenX;
 int tempScreenY = screenY;
