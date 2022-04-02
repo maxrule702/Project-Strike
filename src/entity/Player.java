@@ -115,16 +115,20 @@ public class Player extends Entity {
         else if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed || keyH.spacePressed)  {
             if (keyH.upPressed == true) {
                 direction = "up";
+                attacking = false;
             }
 
              else if (keyH.downPressed == true) {
                 direction = "down";
+                attacking = false;
 
             } else if (keyH.leftPressed == true) {
                 direction = "left";
+                attacking = false;
 
             } else if (keyH.rightPressed == true) {
                 direction = "right";
+                attacking = false;
             }
 
             else if (keyH.spacePressed == true){
