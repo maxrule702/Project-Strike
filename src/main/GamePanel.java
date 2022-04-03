@@ -148,6 +148,9 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
+            if(obj[6] != null && obj[6].triggered){
+                obj[6].update();
+            }
 
         }
         if (gameState == pauseState) {

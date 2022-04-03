@@ -264,25 +264,26 @@ public class Player extends Entity {
                         if(counter == 1){
                             gp.playSE(1);
                         }
-
-                        if (doorHit == true) {
-                            switchTimer++;
-                            if (switchTimer == 5) {
-                                gp.obj[i] = null;
-
-                            }
-
-                            }
-                        }
-                    break;
-
-                case"Door2":
-                    if (doorHit == true) {
-                        switchTimer++;
-                        if (switchTimer == 10) {
-                            gp.obj[i] = null;
-
-                        }
+                        gp.obj[6].triggered = true;
+//
+//                        if (doorHit == true) {
+//                            switchTimer++;
+//                            if (switchTimer == 5) {
+//                                gp.obj[i] = null;
+//
+//                            }
+//
+//                            }
+//                        }
+//                    break;
+//
+//                case"Door2":
+//                    if (doorHit == true) {
+//                        switchTimer++;
+//                        if (switchTimer == 10) {
+//                            gp.obj[i] = null;
+//
+//                        }
                     }
                     break;
 
