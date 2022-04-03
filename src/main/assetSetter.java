@@ -17,27 +17,9 @@ public class assetSetter {
         gp.obj[1].worldX = 31 * gp.tileSize;
         gp.obj[1].worldY = 10 * gp.tileSize;
 
-        gp.obj[2] = new Door3(gp);
-        gp.obj[2].worldX = 31 * gp.tileSize;
-        gp.obj[2].worldY = 11 * gp.tileSize;
-
-        gp.obj[3] = new Door3(gp);
-        gp.obj[3].worldX = 31 * gp.tileSize;
-        gp.obj[3].worldY = 11 * gp.tileSize;
-
-        gp.obj[4] = new Door2(gp);
-        gp.obj[4].worldX = 31 * gp.tileSize;
-        gp.obj[4].worldY = 11 * gp.tileSize;
-
-        gp.obj[5] = new Door1(gp);
-        gp.obj[5].worldX = 31 * gp.tileSize;
-        gp.obj[5].worldY = 11 * gp.tileSize;
-
-        gp.obj[6] = new Door(gp);
+        gp.obj[6] = new Door(gp,0);
         gp.obj[6].worldX = 31 * gp.tileSize;
         gp.obj[6].worldY = 11 * gp.tileSize;
-
-
 
     }
 

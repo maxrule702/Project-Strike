@@ -14,17 +14,17 @@ public class Entity {
     public BufferedImage attackUp1,attackRight1,attackDown1, attackLeft1, attackUp2,attackRight2, attackDown2, attackLeft2;
     public String direction = "down";
     public int actionLockCounter = 0;
- public boolean invincible = false;
- public int invincibleCounter = 0;
+    public boolean invincible = false;
+    public int invincibleCounter = 0;
     public Rectangle solidArea = new Rectangle(0,0,48,48);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
     public int type; // o = player, 1 = npc, 2 = hostile
-   public boolean attacking = false;
-   public Rectangle attackArea = new Rectangle(0,0,0,0);
-  public boolean alive = true;
+    public boolean attacking = false;
+    public Rectangle attackArea = new Rectangle(0,0,0,0);
+    public boolean alive = true;
     public boolean dying = false;
- int dyingcounter = 0;
+    int dyingcounter = 0;
 
     //CHARACTER HEALTH
     public int maxLife;
@@ -45,10 +45,10 @@ public class Entity {
         gp.cChecker.checkTile(this);
         gp.cChecker.checkEntity(this,gp.hostile);
         boolean contactplayer = gp.cChecker.checkPlayer(this);
-if (this.type ==2 && contactplayer == true){
-    if (gp.player.invincible == false){
-        gp.player.life -=1;
-        gp.player.invincible = true;
+        if (this.type ==2 && contactplayer == true){
+            if (gp.player.invincible == false){
+                gp.player.life -=1;
+                gp.player.invincible = true;
     }
 }
 

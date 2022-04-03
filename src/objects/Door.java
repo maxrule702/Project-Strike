@@ -9,10 +9,21 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
 public class Door extends Entity {
-    public Door(GamePanel gp) {
+    public Door(GamePanel gp,int imageID) {
         super(gp);
         name = "door";
-        down1 = setup("/objects/door", gp.tileSize, gp.tileSize);
+
+        if (imageID == 0){
+            down1 = setup("/objects/door", gp.tileSize, gp.tileSize);
+        }else if (imageID == 1){
+            down1 = setup("/objects/door1", gp.tileSize, gp.tileSize);
+        }else if (imageID == 2){
+            down1 = setup("/objects/door2", gp.tileSize, gp.tileSize);
+        }else if (imageID == 3){
+            down1 = setup("/objects/door3", gp.tileSize, gp.tileSize);
+        }else if (imageID == 4){
+            down1 = setup("/objects/door4", gp.tileSize, gp.tileSize);
+        }
         collision = true;
         //
     }
