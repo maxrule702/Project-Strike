@@ -22,6 +22,9 @@ public class Entity {
     public int type; // o = player, 1 = npc, 2 = hostile
    public boolean attacking = false;
    public Rectangle attackArea = new Rectangle(0,0,0,0);
+  public boolean alive = true;
+    public boolean dying = false;
+ int dyingcounter = 0;
 
     //CHARACTER HEALTH
     public int maxLife;
@@ -127,7 +130,52 @@ if (this.type ==2 && contactplayer == true){
 
         g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f)));
 
+        if(dying == true){
+            dyingAnimation(g2);
+        }
+
+
+
     }
+
+
+    public void dyingAnimation (Graphics2D g2){
+        dyingcounter++;
+ int i = 5;
+        if(dyingcounter <= i*2){
+            changeAlpha(g2,0f);
+        }
+
+        if(dyingcounter <= i*3){
+            changeAlpha(g2,1);
+        }
+
+     if(dyingcounter <= i*4){
+         changeAlpha(g2,0f);
+
+    }
+
+        if(dyingcounter <= i*5){
+            changeAlpha(g2,1f);
+        }
+
+        if(dyingcounter <= i*6){
+            changeAlpha(g2,0f);
+        }
+
+
+        if (dyingcounter > 30){
+            dying = false;
+            alive = false;
+        }
+    }
+
+
+    public void changeAlpha (Graphics2D g2, float alphaValue){
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alphaValue));
+    }
+
+
 
     public BufferedImage setup(String imagePath,int width,int height) {
         UtilityTool uTool = new UtilityTool();

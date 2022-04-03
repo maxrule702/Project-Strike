@@ -1,9 +1,7 @@
 package main;
 
 import MonsterPackage.hostile;
-import objects.Door;
-import objects.ammoKey;
-import objects.c4;
+import objects.*;
 
 public class assetSetter {
     GamePanel gp;
@@ -16,16 +14,28 @@ public class assetSetter {
 //        gp.obj[0].worldY = 7 * gp.tileSize;
 
         gp.obj[1] = new c4(gp);
-        gp.obj[1].worldX = 23 * gp.tileSize;
-        gp.obj[1].worldY = 13 * gp.tileSize;
+        gp.obj[1].worldX = 31 * gp.tileSize;
+        gp.obj[1].worldY = 10 * gp.tileSize;
 
-        gp.obj[2] = new Door(gp);
+        gp.obj[2] = new Door3(gp);
         gp.obj[2].worldX = 31 * gp.tileSize;
         gp.obj[2].worldY = 11 * gp.tileSize;
 
-        gp.obj[3] = new Door(gp);
-        gp.obj[3].worldX = 32 * gp.tileSize;
+        gp.obj[3] = new Door3(gp);
+        gp.obj[3].worldX = 31 * gp.tileSize;
         gp.obj[3].worldY = 11 * gp.tileSize;
+
+        gp.obj[4] = new Door2(gp);
+        gp.obj[4].worldX = 31 * gp.tileSize;
+        gp.obj[4].worldY = 11 * gp.tileSize;
+
+        gp.obj[5] = new Door1(gp);
+        gp.obj[5].worldX = 31 * gp.tileSize;
+        gp.obj[5].worldY = 11 * gp.tileSize;
+
+        gp.obj[6] = new Door(gp);
+        gp.obj[6].worldX = 31 * gp.tileSize;
+        gp.obj[6].worldY = 11 * gp.tileSize;
 
 
 
