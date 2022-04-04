@@ -148,8 +148,13 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
-            if(obj[6] != null && obj[6].triggered){
-                obj[6].update();
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null && obj[i].triggered) {
+                    obj[i].update();
+                }
+                if (obj[i] != null && obj[i].isDoor && obj[i].actionFinished){
+                    obj[i] = null;
+                }
             }
 
         }

@@ -24,7 +24,6 @@ public class Entity {
     public Rectangle attackArea = new Rectangle(0,0,0,0);
     public boolean alive = true;
     public boolean dying = false;
-    public boolean triggered = false;
     int dyingcounter = 0;
 
     //CHARACTER HEALTH
@@ -34,6 +33,10 @@ public class Entity {
     public BufferedImage image,image1,image2;
     public String name;
     public boolean collision = false;
+
+    public boolean triggered = false;
+    public boolean actionFinished = false;
+    public boolean isDoor = false;
 
     public Entity(GamePanel gp) {
         this.gp = gp;

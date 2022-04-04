@@ -15,6 +15,7 @@ public class Door extends Entity {
         name = "door";
         getDoorImage(0);
         collision = true;
+        isDoor = true;
         //
     }
 
@@ -34,7 +35,7 @@ public class Door extends Entity {
             getDoorImage(4);
         }
         if (doorCounter== 100){
-            gp.obj[6] = null;
+            actionFinished = true;
         }
 
     }
