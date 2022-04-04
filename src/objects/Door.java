@@ -4,6 +4,7 @@ import entity.Entity;
 import entity.Player;
 import main.GamePanel;
 import org.ietf.jgss.GSSManager;
+import sound.Sound;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -20,24 +21,32 @@ public class Door extends Entity {
     }
 
     public void update(){
-
+        Sound sound = new Sound();
         doorCounter++;
         if (doorCounter== 1){
-            gp.playSE(1);
-        }
-        if (doorCounter== 20){
-            getDoorImage(1);
-        }
-        if (doorCounter== 40){
-            getDoorImage(2);
-        }
-        if (doorCounter== 60){
-            getDoorImage(3);
-        }
-        if (doorCounter== 80){
-            getDoorImage(4);
+            sound.setFile(7);
+            sound.play();
         }
         if (doorCounter== 100){
+            getDoorImage(1);
+        }
+        if (doorCounter== 155){
+            getDoorImage(2);
+            sound.setFile(1);
+            sound.play();
+        }
+
+
+
+        if (doorCounter== 165){
+            getDoorImage(3);
+        }
+        if (doorCounter== 175){
+            getDoorImage(4);
+
+
+        }
+        if (doorCounter== 225){
             actionFinished = true;
         }
 
@@ -58,6 +67,7 @@ public class Door extends Entity {
     }
 
 }
+
 
 
 

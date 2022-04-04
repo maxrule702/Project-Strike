@@ -25,6 +25,7 @@ public class assetSetter {
         gp.obj[7].worldX = 32 * gp.tileSize;
         gp.obj[7].worldY = 11 * gp.tileSize;
 
+
     }
 
     public void setHostile(){

@@ -20,6 +20,7 @@ public class Sound {
         soundURL[4] = getClass().getResource("/sound/damageTakenSound.wav");
         soundURL[5] = getClass().getResource("/sound/meleeSound.wav");
         soundURL[6] = getClass().getResource("/sound/deathSound.wav");
+        soundURL[7] = getClass().getResource("/sound/BombCountdownBeep.wav");
 
 
 

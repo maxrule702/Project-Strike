@@ -262,25 +262,6 @@ public class Player extends Entity {
                         doorHit = true;
                         counter++;
                         gp.obj[i].triggered = true;
-//
-//                        if (doorHit == true) {
-//                            switchTimer++;
-//                            if (switchTimer == 5) {
-//                                gp.obj[i] = null;
-//
-//                            }
-//
-//                            }
-//                        }
-//                    break;
-//
-//                case"Door2":
-//                    if (doorHit == true) {
-//                        switchTimer++;
-//                        if (switchTimer == 10) {
-//                            gp.obj[i] = null;
-//
-//                        }
                     }
                     break;
 
