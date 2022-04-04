@@ -264,7 +264,7 @@ public class Player extends Entity {
                         if(counter == 1){
                             gp.playSE(1);
                         }
-                        gp.obj[6].triggered = true;
+                        gp.obj[i].triggered = true;
 //
 //                        if (doorHit == true) {
 //                            switchTimer++;

@@ -21,6 +21,10 @@ public class assetSetter {
         gp.obj[6].worldX = 31 * gp.tileSize;
         gp.obj[6].worldY = 11 * gp.tileSize;
 
+        gp.obj[7] = new Door(gp);
+        gp.obj[7].worldX = 32 * gp.tileSize;
+        gp.obj[7].worldY = 11 * gp.tileSize;
+
     }
 
     public void setHostile(){
