@@ -22,6 +22,9 @@ public class Door extends Entity {
     public void update(){
 
         doorCounter++;
+        if (doorCounter== 1){
+            gp.playSE(1);
+        }
         if (doorCounter== 20){
             getDoorImage(1);
         }
