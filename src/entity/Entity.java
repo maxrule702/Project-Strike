@@ -25,6 +25,9 @@ public class Entity {
     public boolean alive = true;
     public boolean dying = false;
     int dyingcounter = 0;
+    boolean hpbarOn = false;
+    int hpBarCounter = 0;
+
 
     //CHARACTER HEALTH
     public int maxLife;
@@ -42,6 +45,9 @@ public class Entity {
         this.gp = gp;
     }
         public void setAction(){}
+
+    public void damageReaction(){}
+
     public void update(){
 
         setAction();
@@ -126,8 +132,34 @@ public class Entity {
                 image = right1;
                 break;
         }
+
+        //hostile health bar
+        if(type ==2 && (hpbarOn == true)) {
+            hpBarCounter =0;
+            double oneScale = (double)gp.tileSize/maxLife;
+            double hpBarvalue = oneScale * life;
+
+
+            g2.setColor(new Color(0,0,0));
+            g2.fillRect(screenX-1,screenY-16,gp.tileSize+2,12);
+            g2.setColor(new Color(255, 0, 0));
+            g2.fillRect(screenX, screenY - 15, (int) hpBarvalue, 10);
+            hpBarCounter ++;
+            if (hpBarCounter ==600){
+                hpBarCounter =0;
+                hpbarOn = false;
+            }
+        }
+
+
+
+
+
+
         if (invincible == true) {
-            g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f)));
+            changeAlpha(g2,0.3F);
+            hpbarOn = true;
+
         }
 
         g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
@@ -141,6 +173,14 @@ public class Entity {
 
 
     }
+
+
+
+
+
+
+
+
 
 
     public void dyingAnimation (Graphics2D g2){

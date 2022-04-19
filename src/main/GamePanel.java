@@ -158,9 +158,22 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
         }
+
+
+
+        if (gameState == keyH.Skins) {
+
+
+        }
+
         if (gameState == pauseState) {
             //nothing
         }
+
+
+
+
+
 
     }
 
@@ -206,6 +219,8 @@ public class GamePanel extends JPanel implements Runnable {
                     entityList.add(hostile[i]);
                 }
             }
+
+
 
                 //sort
                 Collections.sort(entityList, new Comparator<Entity>() {

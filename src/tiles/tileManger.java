@@ -18,7 +18,7 @@ public class tileManger {
     public tileManger(GamePanel gp) {
         this.gp = gp;
 
-        tile = new tile[12]; //tile different limit
+        tile = new tile[30]; //tile different limit
         mapTileNumber = new int [gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
         loadMap("/worldMap.txt");
@@ -38,6 +38,10 @@ public class tileManger {
             setup(8, "waterTile",true);
             setup(9, "wood2Tile",false);
             setup(10, "woodTile",false);
+            setup(11, "lavaTileGrassLeft",false);
+            setup(12, "lavaTileGrassUp",false);
+            setup(13, "steelTileLavaLeft",true);
+            setup(14, "grassTileWaterRight",false);
 
         } catch (Exception e) {
             e.printStackTrace();

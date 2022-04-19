@@ -11,6 +11,8 @@ public class KeyHandler implements KeyListener {
 
     //debug
     public boolean showDebugText;
+    public int Skins;
+
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -43,13 +45,20 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ENTER) {
                 if (gp.ui.commandNum == 0) {
+                    //PLAY GAME
                     gp.gameState = gp.playState;
                     gp.playMusic(0);
                 }
                 if (gp.ui.commandNum == 1) {
-                    //add later
+                    //SKINS
+
+
+
+
                 }
                 if (gp.ui.commandNum == 2) {
+                    //EXIT
+
                     System.exit(0);
                 }
             }

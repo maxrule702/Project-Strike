@@ -296,6 +296,8 @@ public class Player extends Entity {
             if (gp.hostile[i].invincible == false) {
                 gp.hostile[i].life -= 1;
                 gp.hostile[i].invincible = true;
+                gp.hostile[i].damageReaction();
+
 
 
                 if (gp.hostile[i].life <= 0) {

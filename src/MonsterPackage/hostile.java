@@ -12,7 +12,7 @@ public class hostile extends Entity {
         type = 2;
         name = "combine";
         speed = 1;
-        maxLife = 4;
+        maxLife = 20;
         life = maxLife;
         getImage();
 
@@ -52,5 +52,24 @@ public class hostile extends Entity {
             actionLockCounter=0;
 
         }
+
+    }
+    public void damageReaction(){
+        actionLockCounter = 0;
+        if (gp.player.direction=="up"){
+            direction = "down";
+        }
+        if (gp.player.direction=="down"){
+            direction = "up";
+        }
+
+        if (gp.player.direction=="right"){
+            direction = "left";
+        }
+        if (gp.player.direction=="left"){
+            direction = "right";
+        }
+
+
     }
 }

@@ -1,10 +1,15 @@
 package main;
 
 import MonsterPackage.hostile;
+import entity.Entity;
 import objects.*;
+
+import java.util.Random;
 
 public class assetSetter {
     GamePanel gp;
+
+
     public  assetSetter (GamePanel gp){
         this.gp = gp;
     }
@@ -29,6 +34,8 @@ public class assetSetter {
     }
 
     public void setHostile(){
+        Random random = new Random();
+
         gp.hostile[0]= new hostile(gp);
         gp.hostile[0].worldX = gp.tileSize *31;
         gp.hostile[0].worldY = gp.tileSize *13;
@@ -37,6 +44,9 @@ public class assetSetter {
         gp.hostile[1]= new hostile(gp);
         gp.hostile[1].worldX = gp.tileSize *32;
         gp.hostile[1].worldY = gp.tileSize *13;
+
+
+
 
 
     }

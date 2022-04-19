@@ -46,7 +46,7 @@ public class Door extends Entity {
 
 
         }
-        if (doorCounter== 225){
+        if (doorCounter== 190){
             actionFinished = true;
         }
 

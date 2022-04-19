@@ -102,6 +102,20 @@ public class UI {
     }
 
 
+
+
+
+    public void  drawSkinsScreen() {
+    g2.dispose();
+    g2.drawImage(gp.player.down1, 300, 100, gp.tileSize*2, gp.tileSize*2, null);
+    }
+
+
+
+
+
+
+
     public void drawTitleScreen() {
 
         g2.setColor((new Color(0,0,0)));
@@ -135,7 +149,7 @@ public class UI {
             g2.drawString(">", x- gp.tileSize, y);
         }
 
-        text = "LOAD GAME";
+        text = "SKINS";
         x = getXForCenteredText(text);
         y+= gp.tileSize;
         g2.drawString(text, x, y);
@@ -149,6 +163,9 @@ public class UI {
         g2.drawString(text, x, y);
         if(commandNum == 2) {
             g2.drawString(">", x- gp.tileSize, y);
+
+
+
         }
     }
 
@@ -168,4 +185,15 @@ public class UI {
         int x = gp.screenWidth/2 - length/2;
         return x;
     }
+
+
+
+
+
+
+
+
+
+
+
 }
