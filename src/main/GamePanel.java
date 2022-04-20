@@ -116,7 +116,6 @@ public class GamePanel extends JPanel implements Runnable {
                     drawCount++;
                 }
                 if (timer >= 1000000000) {
-                    System.out.println("FPS " + drawCount);
                     drawCount = 0;
                     timer = 0;
                 }
@@ -273,6 +272,7 @@ public class GamePanel extends JPanel implements Runnable {
                 g2.drawString("Row" + (player.worldY + player.solidArea.y) / tileSize, x, y);
                 y += lineHeight;
 
+                g2.drawString("FPS "+String.valueOf(FPS),10,650);
                 g2.drawString("draw time:" + passed, 10, 600);
                 System.out.println("draw time;" + passed);
 

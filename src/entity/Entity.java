@@ -33,6 +33,15 @@ public class Entity {
     public int maxLife;
     public int life;
 
+    public int level;
+    public int attack;
+    public int defense;
+    public Entity currentWeapon;
+    public Entity currentShield;
+    public  int attackValue;
+    public int defenseValue;
+
+
     public BufferedImage image,image1,image2;
     public String name;
     public boolean collision = false;

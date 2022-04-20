@@ -3,6 +3,8 @@ import java.util.concurrent.TimeUnit;
 import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
+import objects.OBJ_Weapon;
+import objects.OBJ_shield;
 import sound.Sound;
 
 
@@ -52,8 +54,25 @@ public class Player extends Entity {
         //player status
         maxLife = 6;
         life = maxLife;
+        level = 1;
+        currentWeapon = new OBJ_Weapon(gp);
+        currentShield = new OBJ_shield(gp);
+        attack = getAttack();
+        defense = getDefense();
 
     }
+
+    public int getAttack(){
+        return attack = currentShield.attackValue;
+    }
+
+    public int getDefense(){
+        return defense = currentShield.defenseValue;
+    }
+
+
+
+
 
 
     public void getPlayerImage() {
