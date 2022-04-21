@@ -24,6 +24,7 @@ public class Player extends Entity {
     public int spriteNum = 0;
     Sound sound = new Sound();
     public int switchTimer =0;
+    public int life;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
@@ -47,6 +48,7 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
+
         worldX = gp.tileSize * 31;
         worldY = gp.tileSize * 9;
         speed = 4;

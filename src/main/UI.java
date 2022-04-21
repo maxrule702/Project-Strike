@@ -1,6 +1,7 @@
 package main;
 
 import entity.Entity;
+import entity.Player;
 import objects.OBJ_Heart;
 import sound.Sound;
 
@@ -11,8 +12,10 @@ import java.text.DecimalFormat;
 
 
 
+
 public class UI {
     GamePanel gp;
+
     Graphics2D g2;
     Font arial_20, arial_80B;
     BufferedImage empty_heart, full_heart, half_heart; //Buffered reader for heart images
@@ -189,6 +192,12 @@ public class UI {
         int x = gp.screenWidth/2 - length/2;
         return x;
     }
+    public int getXForRightText(String text, int tailX) {
+
+        int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = tailX-length;
+        return x;
+    }
 
 
 
@@ -199,6 +208,54 @@ public void drawCharacterScreen(){
     final int frameWidth = gp.tileSize * 5;
             final int frameHeight = gp.tileSize * 10;
 drawSubWindow(frameX,frameY,frameWidth,frameHeight);
+
+
+//text
+    g2.setColor(Color.white);
+
+    g2.setFont(g2.getFont().deriveFont(32F));
+    int textX = frameX +20;
+    int textY = frameY + gp.tileSize;
+    final int lineHeight = 32;
+    //name
+    g2.drawString("level",textX,textY);
+    textY += lineHeight;
+
+    g2.drawString("life "  ,textX,textY);
+    textY += lineHeight;
+
+    g2.drawString("weapon",textX,textY);
+    textY += lineHeight;
+
+
+    g2.drawString("shield",textX,textY);
+    textY += lineHeight;
+// values
+    int tailX = (frameX + frameWidth ) -30;
+//rest textY
+    textY = frameY + gp.tileSize;
+    String value;
+
+    value = String.valueOf(gp.player.level);
+    textX = getXForRightText(value , tailX);
+    g2.drawString(value, textX,textY);
+    textY += lineHeight;
+
+    value = String.valueOf(gp.player.life);
+    textX = getXForRightText(value , tailX);
+    g2.drawString(value, textX,textY);
+    textY += lineHeight;
+
+    value = "knife";
+    textX = getXForRightText(value , tailX);
+    g2.drawString(value, textX,textY);
+    textY += lineHeight;
+
+    value = "none";
+    textX = getXForRightText(value , tailX);
+    g2.drawString(value, textX,textY);
+    textY += lineHeight;
+
 }
 public  void drawSubWindow (int x, int y , int width , int height){
         Color c = new Color(0,0,0);
