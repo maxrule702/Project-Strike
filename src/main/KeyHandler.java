@@ -26,8 +26,28 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
+        if(gp.gameState == gp.playState){
+            playState(code);
+        }
 
+
+
+
+        if(gp.gameState == gp.titleState){
+            titleState(code);
+        }
+
+
+        if(gp.gameState == gp.characterState){
+                charSate(code);
+        }
+
+
+    }
+
+    public void titleState(int code){
         //Title State
+
         if (gp.gameState == gp.titleState) {
 
             if (code == KeyEvent.VK_W) {
@@ -43,6 +63,8 @@ public class KeyHandler implements KeyListener {
                     gp.ui.commandNum = 0;
                 }
             }
+
+
             if (code == KeyEvent.VK_ENTER) {
                 if (gp.ui.commandNum == 0) {
                     //PLAY GAME
@@ -51,8 +73,6 @@ public class KeyHandler implements KeyListener {
                 }
                 if (gp.ui.commandNum == 1) {
                     //SKINS
-
-
 
 
                 }
@@ -64,8 +84,12 @@ public class KeyHandler implements KeyListener {
             }
 
         }
+    }
 
+
+    public void playState(int code){
         //Play State
+
         if (gp.gameState == gp.playState) {
             if (code == KeyEvent.VK_W) {
                 upPressed = true;
@@ -84,9 +108,12 @@ public class KeyHandler implements KeyListener {
             }
 
             if (code == KeyEvent.VK_SPACE) {
-                 spacePressed = true;
+                spacePressed = true;
             }
+            if (code == KeyEvent.VK_C) {
+                gp.gameState = gp.characterState;
 
+            }
 
             if (code == KeyEvent.VK_P) {
                 if (gp.gameState == gp.playState) {
@@ -94,6 +121,9 @@ public class KeyHandler implements KeyListener {
                 } else if (gp.gameState == gp.pauseState) {
                     gp.gameState = gp.playState;
                 }
+            }
+
+
                 if (code == KeyEvent.VK_ENTER) {
                     enterPressed = true;
                 }
@@ -112,15 +142,25 @@ public class KeyHandler implements KeyListener {
                 gp.tileM.loadMap("/worldMap.txt");
             }
         }
-        //Pause State
-        else if (gp.gameState == gp.pauseState) {
-            if (code == KeyEvent.VK_P) {
-                gp.gameState = gp.playState;
+
+
+
+
+
+
+
+
+    public void charSate(int code){
+//Char state
+
+         if (gp.gameState == gp.characterState){
+            if(code == KeyEvent.VK_C ){
+                gp.gameState = gp.characterState;
+
             }
         }
-
-
     }
+
 
 
     @Override
@@ -146,6 +186,15 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_SPACE) {
             spacePressed = false;
         }
+
+        if(code == KeyEvent.VK_C ) {
+            gp.gameState = gp.playState;
+        }
+
+        if(code == KeyEvent.VK_P ) {
+            gp.gameState = gp.playState;
+        }
+
 
     }
 }

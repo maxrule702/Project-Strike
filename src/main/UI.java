@@ -5,10 +5,7 @@ import objects.OBJ_Heart;
 import sound.Sound;
 
 import javax.sound.sampled.Clip;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
@@ -25,6 +22,7 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public int commandNum = 0;
+
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -67,6 +65,12 @@ public class UI {
         if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
         }
+
+        //charScreen
+        if(gp.gameState == gp.characterState){
+            drawCharacterScreen();
+        }
+
     }
 
     public void drawPlayerLife() {
@@ -188,7 +192,23 @@ public class UI {
 
 
 
-
+public void drawCharacterScreen(){
+        //create a frame
+    final int frameX = gp.tileSize * 2;
+    final int frameY = gp.tileSize;
+    final int frameWidth = gp.tileSize * 5;
+            final int frameHeight = gp.tileSize * 10;
+drawSubWindow(frameX,frameY,frameWidth,frameHeight);
+}
+public  void drawSubWindow (int x, int y , int width , int height){
+        Color c = new Color(0,0,0);
+        g2.setColor(c);
+        g2.fillRect(x,y,width,height);
+        c =  new Color (255,255,255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x+5 ,y+5, width-10,height-10,25,25);
+}
 
 
 
