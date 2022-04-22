@@ -246,16 +246,12 @@ drawSubWindow(frameX,frameY,frameWidth,frameHeight);
     g2.drawString(value, textX,textY);
     textY += lineHeight;
 
-    value = "knife";
-    textX = getXForRightText(value , tailX);
-    g2.drawString(value, textX,textY);
-    textY += lineHeight;
 
-    value = "none";
-    textX = getXForRightText(value , tailX);
-    g2.drawString(value, textX,textY);
-    textY += lineHeight;
 
+
+    g2.drawImage(gp.player.currentWeapon.down1,tailX - gp.tileSize, textY,null);
+    textY += gp.tileSize;
+    g2.drawImage(gp.player.currentShield.down1, tailX - gp.tileSize ,textY, null);
 }
 public  void drawSubWindow (int x, int y , int width , int height){
         Color c = new Color(0,0,0);
