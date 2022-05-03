@@ -1,11 +1,9 @@
 package main;
 
 import entity.Entity;
-import entity.Player;
 import objects.OBJ_Heart;
 import sound.Sound;
 
-import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
@@ -25,7 +23,8 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public int commandNum = 0;
-
+public int slotCol = 0 ;
+public int slotRow = 0;
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -67,11 +66,13 @@ public class UI {
         //Pause State
         if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
+
         }
 
         //charScreen
         if(gp.gameState == gp.characterState){
             drawCharacterScreen();
+            drawInventory();
         }
 
     }
@@ -253,6 +254,43 @@ drawSubWindow(frameX,frameY,frameWidth,frameHeight);
     textY += gp.tileSize;
     g2.drawImage(gp.player.currentShield.down1, tailX - gp.tileSize ,textY, null);
 }
+
+
+
+
+
+
+    public void drawInventory(){
+        int frameX = gp.tileSize * 18;
+        int frameY = gp.tileSize;
+        int frameHeight = gp.tileSize * 6;
+        int frameWidth = gp.tileSize * 5;
+        drawSubWindow(frameX,frameY,frameWidth,frameHeight);
+
+        //slots
+
+        final int slotXstart = frameX + 20;
+        final int slotYstart = frameY + 20;
+        int slotX  = slotXstart;
+        int slotY = slotYstart;
+
+        int cursorX = slotXstart + (gp.tileSize * slotCol);
+        int cursorY = slotYstart + (gp.tileSize * slotRow);
+        int cursorWidth = gp.tileSize;
+        int cursorHeight = gp.tileSize;
+        //draw
+        g2.setColor(Color.WHITE);
+        g2.drawRoundRect(cursorX,cursorY,cursorWidth,cursorHeight,10,10);
+    }
+
+
+
+
+
+
+
+
+
 public  void drawSubWindow (int x, int y , int width , int height){
         Color c = new Color(0,0,0);
         g2.setColor(c);
